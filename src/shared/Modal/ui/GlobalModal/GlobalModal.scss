@@ -1,0 +1,75 @@
+.globalModal {
+  top: 0;
+  position: fixed;
+  width: 100%;
+  max-width:100%;
+  height: 100vh;
+  z-index: 1000;
+}
+
+.globalModalBack {
+  height: 100%;
+  background: rgba(255, 255, 255, 0.111);
+  backdrop-filter: blur(2px);
+  transition: 0.4s ease;
+
+  padding: 10% 30%;
+}
+
+.hiding {
+  transition: 0.3s ease;
+
+  opacity: 0;
+}
+
+.globalModalContent {
+  max-width: 500px;
+  background: var(--background-contrast2);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  padding: 40px;
+  border-radius: 8px;
+  
+  h1 {
+    font-size: 26px;
+  }
+
+  button {
+    font-size: 24px;
+    border-radius: 6px;
+    padding: 4px 18px;
+  }
+
+  p {
+    font-size: 18px;
+    text-align: center;
+  }
+}
+
+.globalModalOptions {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1.6rem;
+}
+
+@media (max-width: 980px) {
+  .globalModalBack {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0% 8%
+  }
+
+  .globalModalContent {
+    padding: 20px;
+  }
+}
+
+
+@media (max-width: 600px) {
+
+}

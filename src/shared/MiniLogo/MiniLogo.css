@@ -1,0 +1,26 @@
+.miniLogo img {
+  width: 100%;
+  height: 100%;
+  border-radius: 6px;
+
+  filter: saturate(200%);
+}
+
+.secret {
+  display: none;
+}
+
+.logoLoading {
+  animation: 3s infinite go-crazy-go-stupid;
+  animation-delay: 0.5s;
+}
+
+@keyframes go-crazy-go-stupid {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(1800deg);
+  }
+}

@@ -1,0 +1,35 @@
+.postModMenu {
+  position: relative;
+  padding-right: 50px;
+
+  display: flex;
+  align-items: center;
+}
+
+.postModMenu:hover .postModMenuMore {
+  display: flex;
+  flex-direction: column;
+}
+
+.postModMenu .postModMenuMore {
+  display: none;
+  position: absolute;
+  left: 0;
+  border-radius: 6px;
+  background: var(--background-contrast2);
+  
+  padding: 10px;
+}
+
+.postModMenuMore textarea {
+  width: 200px;
+  margin-bottom: 10px;
+}
+
+.postModMenuMore button {
+  background-color: black;
+}
+
+.postModMenuMore button:hover {
+  color: red;
+}

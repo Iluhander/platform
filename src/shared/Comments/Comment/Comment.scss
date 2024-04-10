@@ -1,0 +1,82 @@
+.novelComment {
+  background: rgba(255, 255, 255, 0.045);
+  border-radius: 8px;
+  border: 2px solid #0e0e0e;
+
+  margin-bottom: 6px;
+
+  animation-duration: 1.8s;
+  animation-name: commentAppear;
+
+  padding: 10px 20px;
+
+  p {
+    font-size: 16px;
+  }
+}
+
+.commentHead {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+}
+
+.commentHeadBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+
+  p {
+    white-space: nowrap;
+    margin: 0;
+  }
+
+  a {
+    color: white;
+    transition: 0.4s color;
+  }
+
+  a:hover {
+    color: var(--main-color);
+  }
+}
+
+.commentReplyBlock {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+
+  .commentModMenu {
+    margin-right: 10px;
+  }
+
+  button {
+    background: none;
+  }
+  
+  img {
+    width: 30px;
+    height: 30px;
+  }
+}
+
+.commentAuthor {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  p {
+    color: #5f5f5f;
+    font-size: 14px;
+  
+    overflow: hidden;
+  }
+}
+
+.commentBody {
+  margin-top: 6px;
+  display: flex;
+  flex-direction: column;
+
+  color: white;
+}

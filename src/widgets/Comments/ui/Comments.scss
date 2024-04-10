@@ -1,0 +1,117 @@
+.commentSized {
+  width: max(40%, 390px);
+}
+
+.commentSizedMobile {
+  width: max(40%, 320px);
+}
+
+.lowerLevelSized {
+  width: max(34%, 350px);
+}
+
+.lowerLevelSizedMobile {
+  width: max(30%, 290px);
+}
+
+.novelComments {
+  background-color: #05060E;
+  padding-bottom: 10px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  color: var(--third-color);
+}
+
+.novelComments .loadingCircle {
+  margin: 20px 0px;
+}
+
+.novelComments h2 {
+  color: var(--main-color);
+}
+
+.novelComments h3 {
+  width: max(30%, 430px);
+  color: var(--third-color);
+}
+
+.commentsLoading {
+  animation: 2s infinite appear-from-the-dark;
+}
+
+.commentsListToggler {
+  background: var(--main-color);
+  border-radius: 6px;
+
+  margin: 20px 0 20px calc(50% - 250px);
+  padding: 10px 8px;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.commentsListToggler img {
+  width: 20px;
+  height: 20px;
+}
+
+.commentsListToggler p {
+  font-size: 14px;
+  color: white;
+  margin: 0 10px;
+}
+
+.commentsListToggler img:hover {
+  cursor: pointer;
+}
+
+.authorMiniAvatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 8px;
+  border: 1px solid gray;
+}
+
+.classPageToggler {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1rem;
+}
+
+.classPageToggler .niceButton {
+  border-radius: 8px;
+  padding: 10px;
+}
+
+.replyForm {
+  margin: 8px 0 20px 0;
+}
+
+@keyframes commentAppear {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.unauthorizedFormMock {
+  display: flex;
+  justify-content: center;
+  padding: 10px 20px;
+  border-radius: 6px;
+  background: var(--background-contrast);
+  margin-bottom: 20px;
+  
+  a, h3 {
+    text-align: center;
+    color: var(--main-color);
+  }
+}

@@ -1,0 +1,137 @@
+.navUserMenuAppearing {
+  .navUserList {
+    display: flex;
+  }
+}
+
+.navUserMenuDisappearing {
+  .navUserList {
+    display: flex;
+  }
+}
+
+.navUserMenuIcon {
+  width: 30px;
+  height: 30px;
+
+  cursor: pointer;
+  margin-left: 100px;
+}
+
+.navUserAvatar {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  border-radius: 6px;
+  margin-left: 100px;
+  margin-top: 10px;
+  cursor: pointer;
+  transition: 0.3s transform;
+}
+
+.navUserMenu:hover {
+  .navUserAvatar {
+    transform: scale(1.1);
+  }
+}
+
+.navUserList {
+  position: absolute;
+  right: 70px;
+
+  background: var(--background-contrast2);
+  border: 2px solid var(--main-color);
+
+  border-radius: 8px;
+
+  overflow: hidden;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+
+  > * {
+    padding: 2px 12px 6px 12px;
+    width: 100%;
+  }
+
+  a:first-of-type {
+    padding-top: 6px;
+  }
+
+  > *:last-child {
+    width: unset;
+    color: gray;
+    margin-top: 10px;
+    padding-bottom: 6px;
+  }
+
+  a:not(.userProfileData):hover {
+    background: var(--main-color);
+  }
+
+  a:last-of-type:hover {
+    background: none;
+  }
+}
+
+.navUserMenuSpanList {
+  span {
+    animation: 2s infinite color-roll-gold;
+  }
+
+  p {
+    margin: 0px;
+  }
+}
+
+.userProfileData {
+  margin-bottom: 8px;
+
+  div {
+    height: 30px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    margin-top: 10px;
+    color: var(--lighter-text);
+    
+    p {
+      max-width: 120px;
+      font-size: 16px;
+      overflow: hidden;
+      display: inline-block;
+      margin: 0;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+
+      span {
+        animation: 5s infinite roll;
+      }
+    }
+  }
+}
+
+.navFeatureItem {
+  right: 76px;
+  top: 4px;
+  width: 24px;
+  height: 24px;
+  position: absolute;
+  z-index: 510;
+}
+
+
+@media (max-width: 540px) {
+  .navUserMenu {
+    img {
+      margin-left: 50px;
+    }
+  }
+
+  .navFeatureItem {
+    right: 66px;
+  }
+}

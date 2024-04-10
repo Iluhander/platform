@@ -1,95 +1,56 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+"use client"
 
-export default function Home() {
+import { useEffect, useState } from 'react';
+
+// Components.
+import AppWrapper from '@/appWrapper';
+import { MarketPlaceSearch } from '@/widgets/MarketPlace/MarketPlaceSearch';
+import MarketPlaceMainContent from '@/widgets/MarketPlace/MarketPlaceMainContent/ui/MarketPlaceMainContent';
+
+// Utilities.
+import checkIsMobile from '@/shared/common/lib/checkIsMobile';
+import useURLState from '@/shared/common/lib/hooks/useURLState';
+
+// Styles.
+import './MarketPlaceNovels.scss';
+import './MarketPlaceNovelsMobile.scss';
+
+const defaultSearch = {
+  title: '',
+  genre: 'Любой жанр',
+  author: 'Всех авторов',
+  userID: '',
+  sortBy: 'Новизне'
+};
+
+export default function MarketPlace() {
+  const [search, setSearch] = useURLState(defaultSearch);
+
+  // @ts-ignore
+  const [searchHidden, setSearchHidden] = useState(checkIsMobile());
+
+  useEffect(() => {
+    if (window && window.innerWidth < 600) {
+      setSearchHidden(true);
+    }
+  }, []);
+
   return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>src/app/page.tsx</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
-
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className={styles.grid}>
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore starter templates for Next.js.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
+    <AppWrapper>
+      <MarketPlaceSearch
+        defaultSearch={defaultSearch}
+        search={search}
+        setSearch={setSearch}
+        hidden={searchHidden}
+        setHidden={setSearchHidden}
+      />
+      <main
+        className={`${checkIsMobile() ? 'marketNovelsMobile' : 'marketNovels'} ${
+          searchHidden ? '' : 'resizedMarketNovels'
+        }`}
+      >
+        <MarketPlaceMainContent search={search} />
+      </main>
+    </AppWrapper>
   );
 }

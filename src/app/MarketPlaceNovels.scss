@@ -1,0 +1,57 @@
+.marketNovels {
+  min-height: 100vh;
+  padding: calc(var(--nav-height) + 10px) 0 20px 80px;
+
+  padding-bottom: 60px;
+}
+
+.marketScrollableNovels {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+}
+
+#marketLoadingDiv {
+  background: #151515;
+  padding-bottom: 10px;
+  display: flex;
+  justify-content: center;
+}
+
+#marketLoadingDiv h1 span {
+  animation: 5s infinite color-roll;
+}
+
+.novelsNotFound {
+  color: gray;
+  margin: 6px 0px;
+}
+
+.marketInfoBlock {
+  color: rgb(122, 122, 122);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.marketInfoBlock p {
+  font-size: 18px;
+}
+
+.marketInfoBlock a {
+  font-size: 22px;
+  color: #FFF383;
+}
+
+@media (min-width: 420px) {
+  .marketNovels {
+    padding: calc(var(--nav-height) + 10px) 0 20px 134px;
+  }
+
+  .resizedMarketNovels {
+    padding: calc(var(--nav-height) + 10px) 0 20px 200px;
+  }
+}

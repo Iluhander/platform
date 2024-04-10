@@ -1,0 +1,134 @@
+@use './stylesLib.scss';
+
+:root {
+  --main-color: #DB0076;
+  --main-color-transparent: #db0075b1;
+  --brand-yellow: #FFED4E;
+  --background: #05060E;
+  --background-contrast: rgba(255, 255, 255, 0.05);
+  --background-contrast2: #181821;
+  --background-contrast3: rgba(255, 255, 255, 0.03);
+  --lighter-text: #cdcdcd;
+  --third-color: #ACACAC;
+  --dark-text: rgb(137, 137, 137);
+  --uwu-font: 'Mirza', cursive;
+  --nav-height: 56px;
+}
+
+html {
+  color-scheme: dark;
+  background: var(--background);
+  scroll-behavior: smooth;
+}
+
+.App {
+  text-align: center;
+}
+
+p {
+  font-size: 20px;
+  font-family: 'Mulish', sans-serif;
+}
+
+h1, h2, p, a, q, input, textarea, select, button {
+  font-family: 'Mulish', sans-serif;
+}
+
+q {
+  font-style: italic;
+}
+
+a {
+  text-decoration: none;
+  transition: 0.4s ease-in-out;
+}
+
+h1 {
+  font-size: 24px;
+}
+
+img {
+  color: gray;
+}
+
+button {
+  border: none;
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: default !important;
+}
+
+.highlighted {
+  transition: 0.3s;
+}
+
+.highlighted:hover {
+  filter: brightness(130%);
+}
+
+.highlightedImg {
+  filter: saturate(0.2) brightness(1);
+  transition: 0.3s;
+}
+
+.highlightedImg:hover {
+  filter: saturate(1) brightness(1.2);
+}
+
+@media (max-width: 900px) {
+  p {
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 380px) {
+  h1 {
+    font-size: 22px;
+  }
+}
+
+.opacityAppear {
+  animation: 0.3s forwards opacityAppear;
+}
+
+.opacityDisappear {
+  animation: 0.3s forwards opacityDisppear;
+}
+
+::selection {
+  background: var(--main-color-transparent);
+  color: white;
+}
+
+::-moz-selection {
+  background: var(--main-color-transparent);
+  color: white;
+}
+
+@keyframes opacityAppear {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes opacityDisppear {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
+.visuallyHidden {
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+}

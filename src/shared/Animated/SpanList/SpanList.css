@@ -1,0 +1,81 @@
+.spanList {
+  text-decoration: none;
+
+  transition: 0.05s ease-out;
+}
+
+.fontWeightAnimated:hover {
+  font-weight: 700;
+}
+
+@keyframes roll {
+  0% {
+    filter: brightness(70%);
+  }
+
+  25% {
+    filter: brightness(120%);
+  }
+
+  70% {
+    filter: brightness(320%);
+  }
+
+  100% {
+    filter: brightness(70%);
+  }
+}
+
+@keyframes color-roll {
+  0% {
+    color: black;
+  }
+
+  30% {
+    color: var(--main-color);
+  }
+
+  50% {
+    color: white;
+  }
+
+  80% {
+    color: #FF7EAD;
+  }
+}
+
+@keyframes color-roll-red {
+  0% {
+    color: black;
+  }
+
+  30% {
+    color: rgb(16, 16, 16);
+  }
+
+  50% {
+    color: #ff3b3b;
+  }
+}
+
+@keyframes color-roll-gold {
+  0% {
+    color: white;
+  }
+
+  30% {
+    color: rgb(251, 251, 128);
+  }
+
+  50% {
+    color: #ff5090;
+  }
+
+  70% {
+    color: rgb(251, 251, 128);
+  }
+
+  100% {
+    color: white;
+  }
+}

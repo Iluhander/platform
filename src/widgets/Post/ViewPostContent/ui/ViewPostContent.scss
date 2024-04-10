@@ -1,0 +1,16 @@
+.viewPostContent {
+  background-color: var(--background-contrast3);
+  width: calc(600px - 40px);
+  border: 1px solid rgba(255, 255, 255, 0.100);
+  border-radius: 6px;
+  padding: 20px;
+}
+
+@media (max-width: 900px) {
+  .viewPostContent {
+    width: 300px;
+    border: none;
+    background-color: rgba(255, 255, 255, 0);
+    padding: 0;
+  }
+}

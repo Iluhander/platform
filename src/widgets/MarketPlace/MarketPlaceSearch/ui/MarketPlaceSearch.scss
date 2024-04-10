@@ -1,0 +1,243 @@
+.marketPlaceDiv {
+  position: fixed;
+  height: 100vh;
+
+  padding: calc(var(--nav-height) + 10px) 20px 0 20px;
+
+  background: var(--background);
+
+  z-index: 100;
+  overflow: hidden;
+}
+
+.marketPlaceDivHeader {
+  margin: 10px 0 20px 0;
+  background: none;
+  font-size: 16px;
+
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  padding: 0;
+  color: white;
+
+  * {
+    margin: 0;
+  }
+}
+
+.marketFilters {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 1rem;
+
+  transition: 0.4s ease-in-out;
+
+  * {
+    opacity: 1;
+  }
+
+  select, input {
+    width: 100%;
+  }
+
+  select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+  }
+
+  .niceButton {
+    font-weight: 700;
+    font-size: 16px;
+    margin-top: 20px;
+    border-radius: 6px;
+    padding: 6px 20px;
+  }
+}
+
+.marketFilterDiv {
+  width: 100%;
+
+  display: flex;
+  flex-direction: column; 
+  justify-content: center;
+
+  transition: 0.2s ease-in;
+
+  .marketFilterDivSortLabel {
+    margin-top: 6px;
+    opacity: 0.7;
+
+    display: flex;
+    flex-direction: row;
+
+    p {
+      margin: 0 6px 12px 0;
+      font-size: 14px;
+      color: white;
+    }
+
+    img {
+      margin-top: 1px;
+      width: 18px;
+      height: 18px;
+    }
+  }
+}
+
+.selectDivInput {
+  border: 2px solid var(--main-color);
+  border-radius: 8px;
+}
+
+.selectDivInput:has(select:focus) {
+  border: 2px solid white;
+  background: white;
+}
+
+.selectDivInput select:focus {
+  color: #05060E;
+  font-weight: 600;
+}
+
+.filterDivInput {
+  border-bottom: 2px solid var(--main-color);
+}
+
+.filterDivInput:has(input:focus) {
+  border-bottom: 2px solid white;
+}
+
+.marketFilterSelector, .marketFilterDiv input {
+  background: none;
+  padding: 8px;
+  border: none;
+
+  color: white;
+}
+
+.marketFilterSelector {
+  border-radius: 8px;
+}
+
+.marketFilterSelector:focus, .marketFilterDiv input:focus {
+  outline: none;
+}
+
+.marketSearchInput input {
+  padding-left: 0;
+  filter: saturate(0);
+}
+
+// Hiding filters css.
+
+.visibilityToggler {
+  margin: 8px 0 0 6px;
+  top: 84px;
+
+  border-radius: 50%;
+  background: #05060E;
+
+  img {
+    width: 30px;
+    height: 30px;
+  }
+
+  img:last-of-type {
+    display: none;
+  }
+}
+
+.hiddenFilters {
+  .marketFilters {
+    width: 0;
+  }
+
+  .marketFilters * {
+    opacity: 0;
+    width: auto;
+  }
+
+  .visibilityToggler img:first-of-type {
+    display: none;
+  }
+
+  .visibilityToggler img:last-of-type {
+    display: unset;
+  }
+}
+
+.marketSearchMobileItem {
+  p {
+    font-size: 12px;
+  }
+
+  img {
+    width: 30px;
+    height: 30px;
+  }
+}
+
+.marketSearchMobileLabel {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.marketFiltersMobile {
+  h3:first-of-type {
+    font-size: 16px;
+    
+    text-decoration: underline var(--main-color);
+  }
+
+  .marketPlaceDivHeader {
+    margin-bottom: 40px;
+  }
+
+  .hiddenFilters {
+    width: unset;
+
+    .marketFilters {
+      overflow: hidden;
+    }
+  }
+
+  .marketFilterSelector, .marketFilterDiv input {
+    padding: 10px;
+  }
+
+  .visibilityToggler {
+    display: none;
+  }
+
+  .marketFilters {
+    gap: 1.4rem;
+  }
+
+  p {
+    margin-left: 10px;
+    opacity: 0;
+  }
+}
+
+@media (max-width: 600px) {
+  .hiddenFilters {
+    padding: calc(var(--nav-height) + 10px) 0 0 20px;
+  }
+  
+  .shownFilters {
+    width: calc(100% - 40px);
+    padding: calc(var(--nav-height) + 10px) 20px 0 20px;
+
+    p {
+      opacity: 1;
+    }
+
+    h3:first-of-type {
+      text-decoration: none;
+    }
+  }
+}

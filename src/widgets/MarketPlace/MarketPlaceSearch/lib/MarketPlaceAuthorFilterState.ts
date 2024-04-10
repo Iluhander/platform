@@ -1,0 +1,5 @@
+export default {
+  AUTHENTICATED: 0,
+  NOT_AUTHENTICATED: 1,
+  NON_AUTHENTICATED_WARN: 2
+};

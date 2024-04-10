@@ -1,0 +1,7 @@
+.loadingCircle {
+  color: rgb(122, 122, 122);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

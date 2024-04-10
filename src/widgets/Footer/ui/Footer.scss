@@ -1,0 +1,148 @@
+footer {
+  position: relative;
+  width: 100%;
+
+  z-index: 600;
+
+  display: flex;
+
+  color: var(--third-color);
+  font-size: 12px;
+  line-height: 15px;
+
+  p {
+    font-size: 12px;
+  }
+
+  a:not(.leadLink) {
+    text-decoration: none;
+    color: rgba(207, 189, 196, 0.734);
+    transition: 0.4s ease-in-out;
+  }
+
+  a:not(.leadLink):hover {
+    text-decoration: none;
+    color:#ffd8d8e0;
+    filter: drop-shadow(8px 8px 20px rgb(212, 224, 255)) invert(0%);
+  }
+}
+
+#footerMainContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-self: center;
+  flex-wrap: wrap;
+  flex: 1 0 51%;
+}
+
+.footerElement {
+  display: block;
+  width: 180px;
+  padding: 24px 0px 24px 36px;
+
+  a {
+    color: var(--third-color);
+    text-decoration: none;
+  }
+
+  img {
+    width: 24px;
+    filter: saturate(30%);
+  }
+}
+
+.footerElement:first-child {
+  width: 260px;
+}
+
+.row {
+  width: 100%;
+  display: flex;
+  height: 38px;
+
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+
+  * {
+    margin: 0px 12px 0px 0px;
+  }
+}
+
+.footerLogoElement {
+  height: 300px;
+  background: none;
+  
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: flex-start;
+  padding: 24px 32px;
+
+  .miniLogo {
+    width: 40px;
+    height: 40px;
+  }
+
+  img {
+    filter: saturate(75%);
+  
+    border-radius: 2px;
+  }
+
+  a:hover {
+    filter: drop-shadow(4px 4px 26px #ff237f9b) saturate(100%) !important;
+  }
+}
+
+#leadLabel {
+  background: radial-gradient(50% 50% at 50% 50%, #FF5BA0 0%, rgba(255, 91, 160, 0) 100%), #FFED4E;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+
+  transition: 0.4s ease-in-out;
+
+  h2 {
+    font-size: 16px;
+    margin-top: 10px;
+  }
+}
+
+#leadLabel:hover {
+  filter: brightness(130%);
+}
+
+@media (max-width: 760px) {
+  footer {
+    flex-direction: column;
+  }
+
+  #leadLabel h2 {
+    font-size: 14px;
+  }
+
+  .footerLogoElement {
+    width: unset !important;
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 550px) {
+  .footerElement:first-child {
+    width: 500px;
+  }
+
+  .footerElement {
+    height: unset;
+    width: 130px;
+  }
+}
+
+@media (max-width: 280px) {
+  #leadLabel {
+    margin-bottom: 20px;
+  }
+}

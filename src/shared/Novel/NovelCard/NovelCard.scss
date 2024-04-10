@@ -1,0 +1,119 @@
+.novelArticle {
+  background-color: var(--background-contrast);
+  
+  position: relative;
+  width: 230px;
+  min-height: 340px;
+  border: 2px;
+  border-radius: 8px;
+  border: 2px solid rgba(255, 255, 255, 0);
+
+  transition: 0.2s ease-in;
+
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+
+  overflow: hidden;
+  text-align: left;
+  color: white;
+  font-size: 16px;
+}
+
+.novelArticle:hover {
+  border: 2px solid var(--main-color);
+  transform: scale(1.02);
+}
+
+.cardDescription {
+  margin: 0 0;
+  height: 200px;
+  color: white;
+  text-decoration: none;
+}
+
+.cardDescriptionAuthor {
+  font-style: italic;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.novelImg {
+  height: 200px;
+  width: 230px;
+  border-radius: 6px;
+
+  object-fit: cover;
+}
+
+.novelImg:hover {
+  cursor: pointer;
+}
+
+.novelArticle h3 {
+  height: 52px;
+  font-size: 18px;
+  width: 100%;
+  margin-top: 10px;
+  color: rgb(255, 255, 255);
+  margin-bottom: 8px;
+}
+
+.novelGenre {
+  height: unset;
+  font-size: medium;
+  margin-bottom: 0;
+}
+
+@media (max-width: 542px) {
+  .novelArticle {
+    width: 214px;
+    min-height: 240px;
+  }
+
+  .novelCard {
+    height: 160px;
+    width: 160px; 
+  }
+
+  .novelArticle h3 {
+    font-size: 16px;
+    height: 26px;
+  }
+
+  .novelImg {
+    height: 190px;
+    width: 214px;
+  }
+
+  .novelGenre {
+    font-size: 14px;
+    color:#646464;
+  }
+}
+
+.novelStatsDiv {
+  margin-top: 8px;
+  display: flex;
+  flex-direction: row;
+
+  .novelThumbUpDiv {
+    margin-right: 10px;
+  }
+
+  div {
+    opacity: 0.5;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    img {
+      width: 18px;
+      height: 18px;
+    }
+
+    p {
+      margin: 0 6px;
+      font-size: 16px;
+    }
+  }
+}

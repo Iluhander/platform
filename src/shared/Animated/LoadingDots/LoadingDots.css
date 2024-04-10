@@ -1,0 +1,20 @@
+.loading-dots span {
+  font-style: italic;
+  color: var(--main-color);
+  animation: 1.4s infinite opacityFade;
+}
+
+@keyframes opacityFade {
+  0% {
+    opacity: 1;
+  }
+
+  50% {
+    color: white;
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}

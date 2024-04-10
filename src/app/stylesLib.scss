@@ -1,0 +1,82 @@
+.niceButton {
+  background: radial-gradient(50% 50% at 50% 50%, rgba(255, 91, 91, 0.2) 43.75%, rgba(255, 140, 141, 0.2) 55.73%, rgba(255, 244, 249, 0.207) 100%), #db0075cf;
+  cursor: pointer;
+
+  color: white;
+  font-weight: 500;
+
+  transition: 0.2s ease-in-out;
+}
+
+.niceButton:disabled {
+  opacity: 0.7;
+}
+
+.niceButton:enabled:hover {
+  filter: brightness(130%);
+}
+
+.noBackgroundInput {
+  background-color: rgba(0, 0, 0, 0);
+  border: none;
+
+  transition: 0.3 ease-in-out;
+}
+
+.radial2 {
+  background: radial-gradient(50% 50% at 50% 50%, rgba(255, 91, 91, 0.2) 43.75%, rgba(255, 140, 141, 0.2) 55.73%, rgba(255, 244, 249, 0.2) 100%), #DB0076;
+  color: white;
+}
+
+.niceText {
+  background: radial-gradient(50% 50% at 50% 50%, #FF5BA0 0%, rgba(255, 91, 160, 0) 100%), #FFED4E;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+}
+
+.novelStarsDiv {
+  display: flex;
+  align-items: center;
+
+  p {
+    margin-left: 10px;
+    font-size: 14px;
+    color:#555555;
+  }
+
+  img {
+    width: 14px;
+    height: 14px;
+  }
+}
+
+.grayStar {
+  filter: grayscale(1) brightness(0.3);
+}
+
+.darkInput {
+  background: #212121;
+
+  border: 2px solid #181818;
+
+  color: white;
+}
+
+.successParagraph {
+  color: green;
+}
+
+.opacitiyHidden {
+  opacity: 0;
+}
+
+.textButton {
+  background: none;
+}
+
+.secondaryLink {
+  color: var(--third-color);
+  font-size: 14px;
+}

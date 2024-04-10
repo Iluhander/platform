@@ -1,0 +1,13 @@
+.reactionImg {
+  position: relative;
+  width: 18px;
+  height: 18px;
+  
+  transition: 0.2s;
+}
+
+button {
+  .reactionImg:hover {
+    transform: scale(1.35);
+  }
+}

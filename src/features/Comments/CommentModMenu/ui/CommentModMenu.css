@@ -1,0 +1,23 @@
+.commentModMenu {
+  position: relative;
+  padding-left: 50px;
+}
+
+.commentModMenu:hover .commentModMenuMore {
+  display: flex;
+  flex-direction: column;
+}
+
+.commentModMenu .commentModMenuMore {
+  display: none;
+  position: absolute;
+  right: 0;
+  border-radius: 6px;
+  background: var(--background-contrast);
+  
+  padding: 10px;
+}
+
+.commentModMenuMore button:hover {
+  color: red;
+}

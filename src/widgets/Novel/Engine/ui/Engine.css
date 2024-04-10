@@ -1,0 +1,52 @@
+.engineBlock {
+  position: relative;
+}
+
+.engineResize {
+  --resize-width: 30px;
+  
+  width: var(--resize-width);
+  height: var(--resize-width);
+
+  background: #db0075a5;
+  border-radius: 8px;
+  
+  position: absolute;
+  background-size: cover;
+  filter: brightness(75%);
+}
+
+.engineResize:hover {
+  filter: brightness(120%);
+  cursor: pointer;
+}
+
+.engineZoomIn {
+  background-image: url("../../../../../public/icons/fullscreen.png");
+  display: block;
+
+  top: 20px;
+  margin-left: calc(94% - var(--resize-width) / 2);
+}
+
+.engineZoomOut {
+  background-image: url("../../../../../public/icons/panescreen.png");
+  display: none;
+
+  top: 44px;
+  left: 94vw;
+}
+
+.engineMobile {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.zoomedIn .engineZoomIn {
+  display: none;
+}
+
+.zoomedIn .engineZoomOut {
+  display: block;
+}

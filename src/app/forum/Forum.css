@@ -1,0 +1,9 @@
+.forum {
+  padding: 80px 20px;
+  display: flex;
+  flex-direction: row;
+}
+
+.forumMobile {
+  min-height: 74vh;
+}

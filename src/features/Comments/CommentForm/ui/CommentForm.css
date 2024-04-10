@@ -1,0 +1,77 @@
+.novelCommentForm {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 8px;
+
+  animation-duration: 1s;
+  animation-name: commentAppear;
+}
+
+.novelCommentForm p {
+  font-size: 14px;
+  white-space: nowrap;
+}
+
+.novelCommentForm button, .novelCommentForm textarea {
+  border-radius: 6px;
+
+  font-size: 16px;
+}
+
+.novelCommentForm button {
+  padding: 8px 30px;
+}
+
+.novelCommentForm textarea {
+  padding: 14px;
+}
+
+.novelCommentForm textarea {
+  border: 2px solid #141414;
+  background-color: rgba(255, 255, 255, 0.089);
+  color: white;
+}
+
+.novelCommentForm .novelStarsDiv img {
+  filter: grayscale(1);
+}
+
+.novelCommentForm .novelStarsDiv img:hover {
+  cursor: pointer;
+}
+
+.novelCommentForm > div {
+  min-height: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+@media (max-width: 540px) {
+  .novelCommentForm .authorMiniAvatar {
+    display: none;
+  }
+
+  .novelCommentForm {
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+  }
+
+  .novelCommentForm > div {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+  }
+}
+
+.commentFormMock {
+  background: rgba(255, 255, 255, 0.045);
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}

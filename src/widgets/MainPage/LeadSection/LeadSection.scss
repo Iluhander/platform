@@ -1,0 +1,116 @@
+//
+// Lead section.
+//
+
+.leadSection {
+  width: 100%;
+  padding: 20px 0px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.leadSection:first-of-type {
+  background: linear-gradient(180deg, rgba(71, 71, 71, 0) 0%, rgba(0, 0, 0, 0.865) 100%), url("/images/uwubackground.png");
+  background-repeat: no-repeat, no-repeat;
+  background-position-y: center, -584px;
+  background-position-x: center, center;
+}
+
+.leadSection:last-of-type {
+  padding-bottom: 170px;
+  
+  background: linear-gradient(180deg,rgb(0, 0, 0) 50%, rgba(71, 71, 71, 0) 60%), url("/images/uwubackground.png");
+  background-repeat: no-repeat, no-repeat;
+  background-position-y: center, -450px;
+  background-position-x: center, center;
+}
+
+//
+// Lead section (adaptive).
+//
+
+@media (max-width: 900px) {
+  .leadSection:first-of-type {
+    background: linear-gradient(180deg, rgba(71, 71, 71, 0) 0%, rgba(0, 0, 0, 1) 100%), url("/images/uwubackground.png");
+    background-position-y: center, -584px;
+    background-position-x: center, center;
+  }
+
+  .leadSection:last-of-type {
+    background: linear-gradient(180deg,rgb(0, 0, 0) 65%, rgba(71, 71, 71, 0) 85%), url("/images/uwubackground.png");
+    background-position-y: center, -400px;
+    background-position-x: center, center;
+  }
+}
+
+@media (max-width: 800px) {
+  .leadSection {
+    flex-direction: column !important;
+  }
+
+  .leadSection:last-of-type {
+    background-position-y: center, -100px;
+  }
+}
+
+//
+// Lead section children (contents).
+//
+
+.leadSection > div {
+  width: 420px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.leadSection > div > h1 {
+  margin: 14px 0px;
+}
+
+.leadSection > div > * {
+  margin: 2px 0px;
+}
+
+.leadSection > * {
+  margin: 10px 30px;
+}
+
+.leadSection a p {
+  background: linear-gradient(180deg, #FFFFFF 0%, #FFF383 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+  background-blend-mode: lighten;
+}
+
+//
+// Lead section children (adaptive).
+//
+
+@media (max-width: 550px) {
+  .leadSection > div {
+    width: 320px;
+    align-items: center;
+    text-align: center;
+  }
+
+  .leadSection a p {
+    font-size: 18px
+  }
+
+  .leadSection p {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 380px) {
+  .leadSection p {
+    font-size: 14px;
+  }
+}

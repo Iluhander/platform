@@ -1,0 +1,260 @@
+.novelTopMargin {
+  background: #05060E;
+  height: calc(var(--nav-height) + 10px);
+}
+
+.novelBlock {
+  padding: 0 0 10vh 0;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 2rem;
+
+  .novelTitle {
+    width: max(32vw, 340px);
+    margin-top: 0;
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .novelCover {
+    width: 340px;
+    height: 200px;
+    margin-bottom: 4px;
+    border-radius: 6px;
+
+    img {
+      border-radius: 6px;
+    }
+  
+    object-fit: cover;
+  }
+
+  .novelDescriptionBlock {
+    min-width: 300px;
+
+    .novelStatsDiv {
+      margin-top: 8px;
+      display: flex;
+      flex-direction: row;
+    
+      .novelThumbUpDiv {
+        margin-right: 10px;
+      }
+    
+      div {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    
+        button {
+          background: none;
+          padding: 0;
+
+          img {
+            margin-top: 2px;
+            width: 18px;
+            height: 18px;
+          }
+        }
+
+        p {
+          margin: 0 0 0 6px;
+          font-size: 16px;
+        }
+      }
+    }
+  }
+}
+
+.novelDataView {
+  min-height: 416px;
+  margin-top: 46px;
+}
+
+.novelBlockMobile {
+  padding: 0 0 8vh 0;
+
+  .novelTitle {
+    width: auto;
+    font-size: 18px;
+  }
+
+  .novelCover {
+    width: 298px;
+    height: 180px;
+  }
+
+  .novelDescriptionBlock {
+    min-width: 150px;
+    background: none;
+  }
+
+  .novelDataView {
+    margin-top: 10px;
+  }
+}
+
+.novelPlayMode {
+  background: radial-gradient(50% 50% at 50% 50%, rgb(83, 48, 61) 43.75%, rgb(0, 0, 0));
+}
+
+.novelDescriptionBlock {
+  height: 100%;
+  background: rgba(255, 255, 255, 0.038);
+  border-radius: 6px;
+
+  animation: 1s appear-from-the-dark;
+  animation-duration: 2.5s;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+
+  padding: 20px;
+
+  input, textarea, select {
+    border-radius: 6px;
+  }
+
+  input {
+    width: auto;
+    height: auto;
+    font-family: inherit;
+    padding: 4px;
+    border: solid lightgray;
+    font-size: 16px;
+  }
+  
+  textarea {
+    width: 96%;
+    height: 140px;
+    background-color: #ffffff15;
+    border: none;
+    padding: 10px;
+  
+    color: white;
+    font-size: 18px;
+  }
+
+  select {
+    background-color: #ffffff15;
+    border: none;
+  
+    padding: 6px;
+    transition: 0.3s ease-in-out;
+  }
+
+  select:focus {
+    background: white;
+    color: black;
+  }
+  
+  button {
+    border-radius: 8px;
+    border: 0px;
+    padding: 8px 10px 8px 10px;
+  
+    font-size: 18px;
+  }
+}
+
+#novelLoadingDiv {
+  height: 100vh;
+  background: black;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#novelLoadingDiv h1 span {
+  animation: 2s infinite color-roll-red;
+}
+
+@keyframes appear-from-the-dark {
+  0% {
+    filter: opacity(0);
+  }
+
+  100% {
+    filter: opacity(100%);
+  }
+}
+
+#updatingInfo {
+  width: 30px;
+  height: 30px;
+  border-radius: 6px;
+  animation: 1.4s infinite loading;
+}
+
+@keyframes loading {
+  0% {
+    transform: rotate(0deg);
+    filter: hue-rotate(0turn);
+  }
+
+  100% {
+    transform: rotate(720deg);
+    filter: hue-rotate(0.9turn);
+  }
+}
+
+#novelMessage {
+  display: flex;
+  align-items: center;
+}
+
+#novelMessage p {
+  font-size: 14px;
+  margin-left: 14px;
+}
+
+#novelMainBlock {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.novelDescriptionView {
+  width: 300px;
+}
+
+#novelButtons {
+  display: flex;
+  flex-direction: row;
+
+  margin-top: 26px;
+}
+
+#novelButtons > * {
+  margin: 10px 2px;
+}
+
+@media (max-width: 734px) {
+  .novelTitle {
+    margin-top: 30px;
+  }
+}
+
+.novelDataText {
+  font-size: 16px;
+  margin-top: auto;
+  color: rgb(161, 161, 161);
+}
+
+.novelDataLink {
+  color: rgb(161, 161, 161);
+  transition: 0.4s color;
+
+  &:hover {
+    color: var(--main-color);
+  }
+}
