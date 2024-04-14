@@ -3,7 +3,7 @@ import InfiniteScroll from 'react-infinite-scroll-component';
 import { GetArrStatus } from '@iluhander/uwu-react';
 import useGetCommentsPage from '../../../shared/common/api/comment/useGetCommentsPage';
 import { CommentContext } from '@/shared/common/lib/comment/СommentContext';
-import { commentsPerPage } from '@/backend/shared/utilities/constants';
+import { commentsPerPage } from '@/shared/common/model/constants';
 import { CommentsContext } from '@/shared/common/lib/comment/CommentsContext';
 import { IPage } from '@/shared/common/model';
 import { IComment } from '@/shared/common/model/comment';
@@ -35,6 +35,7 @@ const CommentsReplies: FC<ICommentsRepliesProps> = ({ setMaxCount }) => {
     const targetPage = Math.floor(data.length / 8);
 
     setData((prevData) => ({
+      index: targetPage * 7,
       data: prevData.data.slice(0, targetPage * 8),
       maxCount: prevData.maxCount + 1
     }));

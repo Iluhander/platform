@@ -1,3 +1,5 @@
+'use client'
+
 import { CSSProperties, FC, ReactNode } from 'react';
 import { SpanList } from '@/shared/Animated';
 

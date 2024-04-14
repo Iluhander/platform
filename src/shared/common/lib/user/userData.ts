@@ -1,4 +1,4 @@
-import { Dispatch, createContext } from 'react';
+import { createContext } from 'react';
 
 export const DefaultUserName = '?';
 

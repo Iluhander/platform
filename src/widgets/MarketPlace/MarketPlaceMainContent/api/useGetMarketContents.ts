@@ -1,11 +1,11 @@
-import { useReq, GetArrStatus } from '@iluhander/uwu-react';
+import { useReq, GetArrStatus, ReqStatus } from '@iluhander/uwu-react';
 import { $api, defaultConfig } from '@/shared/common/api/http';
 import { INovel, INovelSearch, IPage } from '@/shared/common/model';
 
 /**
  * Hook for getting pages of novels.
  */
-const useGetMarketContents = (search: INovelSearch) =>
+const useGetMarketContents = (search: INovelSearch, initialData: IPage<INovel>) =>
   useReq<number, IPage<INovel>>(
     (pageIndex) =>
       $api.post('/novel/novels-list', search, {
@@ -13,14 +13,14 @@ const useGetMarketContents = (search: INovelSearch) =>
         params: { pageIndex }
       }),
     {
-      initialData: { data: [], maxCount: 0 },
-      notInstantReq: true,
+      initialData,
+      initialStatus: initialData.data.length > 0 ? ReqStatus.INITIALIZED : ReqStatus.LOADING,
       reducer: (prevData, newData) => ({
+        ...newData,
         data: (prevData as any).data.concat(newData.data),
-        maxCount: newData.maxCount
       }),
       getSuccessStatus: (data) => {
-        if (!data?.data?.length) {
+        if (!data?.index && !data?.data?.length) {
           return GetArrStatus.NO_CONTENT;
         }
 

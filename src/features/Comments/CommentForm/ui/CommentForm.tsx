@@ -1,10 +1,10 @@
 /* eslint jsx-a11y/click-events-have-key-events: "off", jsx-a11y/no-noninteractive-element-interactions: "off", no-loop-func: "off" */
 
 import { CSSProperties, FC, FormEventHandler, useContext, useEffect } from 'react';
+import { isMobile } from 'react-device-detect';
 
 // Utilities.
 import keyDownHandler from '@/shared/common/lib/keyDownHandler';
-import checkIsMobile from '@/shared/common/lib/checkIsMobile';
 import { UserDataContext } from '@/shared/common/lib/user/userData';
 import CommentPostStatus from '../lib/CommentPostStatus';
 import useSendComment from '@/shared/common/api/comment/useSendComment';
@@ -26,7 +26,7 @@ interface ICommentFormMockProps {
 const CommentFormMock: FC<ICommentFormMockProps> = ({ text, href, tag, style }) => {
   return (
     <div
-      className={`commentFormMock ${checkIsMobile() ? 'commentSizedMobile' : 'commentSized'}`}
+      className={`commentFormMock ${isMobile ? 'commentSizedMobile' : 'commentSized'}`}
       style={style}
     >
       <SpanList href={href} text={text} tag={tag} />
@@ -102,11 +102,11 @@ const CommentForm: FC<ICommentFormProps> = ({ callReplyTo, callCommentsRefetch, 
     ((e.target as HTMLFormElement).elements[0] as HTMLInputElement).value = '';
   };
 
-  const userAvatarURL = `${process.env.REACT_APP_BACKEND}/static/avatar/${userData.id}?v=${userData.avatarVersion}`;
+  const userAvatarURL = `${process.env.NEXT_PUBLIC_BACKEND}/static/avatar/${userData.id}?v=${userData.avatarVersion}`;
 
   return (
     <form
-      className={`novelCommentForm ${checkIsMobile() ? 'commentSizedMobile' : 'commentSized'} ${
+      className={`novelCommentForm ${isMobile ? 'commentSizedMobile' : 'commentSized'} ${
         className || ''
       }`}
       onSubmit={onCommentSubmit}
@@ -119,7 +119,7 @@ const CommentForm: FC<ICommentFormProps> = ({ callReplyTo, callCommentsRefetch, 
         maxLength={256}
         cols={40}
         rows={4}
-        style={{ height: '72px', maxWidth: checkIsMobile() ? '290px' : 'unset' }}
+        style={{ height: '72px', maxWidth: isMobile ? '290px' : 'unset' }}
         required
       />
       <div>{sendElem}</div>

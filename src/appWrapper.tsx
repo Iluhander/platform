@@ -1,3 +1,5 @@
+'use client'
+
 import { FC, SetStateAction, useEffect, useRef, useState } from 'react';
 import { ReqStatus } from '@iluhander/uwu-react';
 
@@ -11,6 +13,7 @@ import userSession from './shared/common/lib/user/userSession';
 import AuxiliaryProvider from './shared/common/lib/auxiliary/AuxiliaryProvider';
 import { Navbar } from './widgets/Navbar';
 import Footer from './widgets/Footer/ui/Footer';
+import ModalWrapper from './shared/Modal/ui/ModalWrapper';
 
 interface IAppWrapperProps {
   children: React.ReactNode;
@@ -62,17 +65,21 @@ const AppWrapper:FC<IAppWrapperProps> = ({ children }) => {
   };
 
   return (
-    <UserDataContext.Provider value={{ userData, setUserData }}>
-      <AuxiliaryProvider>
-        <ModalContext.Provider
-          value={{ modalData, setModalData: handleSetModalData, removeModal }}
-        >
-          <Navbar />
-          {children}
-          <Footer />
-        </ModalContext.Provider>
-      </AuxiliaryProvider>
-    </UserDataContext.Provider>
+    <>
+      <UserDataContext.Provider value={{ userData, setUserData }}>
+        <AuxiliaryProvider>
+          <ModalContext.Provider
+            value={{ modalData, setModalData: handleSetModalData, removeModal }}
+          >
+            <Navbar />
+            {children}
+            <Footer />
+            <ModalWrapper />
+          </ModalContext.Provider>
+        </AuxiliaryProvider>
+      </UserDataContext.Provider>
+      <div id="root" />
+    </>
   );
 };
 

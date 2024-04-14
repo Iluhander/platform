@@ -4,14 +4,14 @@ import { CSSProperties, FC, useCallback, useContext, useEffect, useMemo, useRef 
 import useGetCommentsPage from '@/shared/common/api/comment/useGetCommentsPage';
 import { LoadingCircle } from '@/shared/Animated';
 import { CommentsContext } from '@/shared/common/lib/comment/CommentsContext';
-import { commentsPerPage } from '@/backend/shared/utilities/constants';
-import checkIsMobile from '@/shared/common/lib/checkIsMobile';
 import { UserDataContext, EUserDataStatus } from '@/shared/common/lib/user/userData';
+import { isMobile } from 'react-device-detect';
 
 // Components.
 import { SpanList } from '@/shared/Animated';
 import { IPage } from '@/shared/common/model';
 import { IComment } from '@/shared/common/model/comment';
+import { commentsPerPage } from '@/shared/common/model/constants';
 
 interface ICommentsListProps {
   CommentBlock: FC<any>;
@@ -38,6 +38,7 @@ const CommentsList: FC<ICommentsListProps> = ({ CommentBlock, CommentForm }) => 
           setTimeout(() => loadMore(targetPage), 0);
 
           return {
+            index: targetPage * 7,
             data: prevData.data.slice(0, targetPage * 8),
             maxCount: prevData.maxCount + 1
           };
@@ -53,6 +54,7 @@ const CommentsList: FC<ICommentsListProps> = ({ CommentBlock, CommentForm }) => 
           while (i < prevList.length && prevList[i].id !== commentId) i += 1;
 
           return {
+            ...prevData,
             maxCount: prevData.maxCount,
             data: [
               ...prevList.slice(0, i),
@@ -105,7 +107,7 @@ const CommentsList: FC<ICommentsListProps> = ({ CommentBlock, CommentForm }) => 
     mainForm = (
       <div
         className={`unauthorizedFormMock ${
-          checkIsMobile() ? 'commentSizedMobile' : 'commentSized'
+          isMobile ? 'commentSizedMobile' : 'commentSized'
         }`}
       >
         <SpanList text="Войдите, чтобы оставить комментарий" href="/login" />
@@ -115,7 +117,7 @@ const CommentsList: FC<ICommentsListProps> = ({ CommentBlock, CommentForm }) => 
     mainForm = (
       <div
         className={`unauthorizedFormMock ${
-          checkIsMobile() ? 'commentSizedMobile' : 'commentSized'
+          isMobile ? 'commentSizedMobile' : 'commentSized'
         }`}
       >
         <SpanList text="Активируйте аккаунт, чтобы оставить комментарий" tag="h3" />

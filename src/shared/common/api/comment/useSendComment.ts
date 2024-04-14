@@ -1,12 +1,12 @@
 import { useContext, useState } from 'react';
 import { useReq } from '@iluhander/uwu-react';
 import { $api } from '../http';
-import { useSearchParams } from 'next/navigation';
+import { useParams } from 'next/navigation';
 import { CommentContext } from '../../lib/comment/СommentContext';
 import CreateCommentDto from './CreateCommentDto';
 
 export default function useSendComment() {
-  const params = useSearchParams();
+  const params = useParams();
   const parentCommentContext = useContext(CommentContext);
   const [available, setAvailable] = useState(true);
 
@@ -16,11 +16,11 @@ export default function useSendComment() {
   }
 
   if (window.location.pathname.includes('novel')) {
-    queryObj.novelId = params.get('id');
+    queryObj.novelId = params.id;
   }
 
   if (window.location.pathname.includes('post')) {
-    queryObj.postId = params.get('id');
+    queryObj.postId = params.id;
   }
 
   return {

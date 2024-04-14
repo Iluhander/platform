@@ -1,5 +1,5 @@
 import { CSSProperties, FC, ReactNode } from 'react';
-import checkIsMobile from '@/shared/common/lib/checkIsMobile';
+import { isMobile } from 'react-device-detect';
 import { DefaultUserName } from '@/shared/common/lib/user/userData';
 import { IComment } from '@/shared/common/model/comment';
 
@@ -26,8 +26,8 @@ const Comment: FC<ICommentProps> = ({
 }) => {
   let sizeClass = 'commentSized';
   if (isOnLowerLevel) {
-    sizeClass = checkIsMobile() ? 'lowerLevelSizedMobile' : 'lowerLevelSized';
-  } else if (checkIsMobile()) {
+    sizeClass = isMobile ? 'lowerLevelSizedMobile' : 'lowerLevelSized';
+  } else if (isMobile) {
     sizeClass = 'commentSizedMobile';
   }
 
@@ -36,19 +36,18 @@ const Comment: FC<ICommentProps> = ({
     ? handleUserName(comment.replyToComment.author?.username)
     : '';
 
-  const avatarURL = `${process.env.REACT_APP_BACKEND}/static/avatar/${comment.author?.id}?v=${comment.author?.avatarVersion}`;
+  const avatarURL = `${process.env.NEXT_PUBLIC_BACKEND}/static/avatar/${comment.author?.id}?v=${comment.author?.avatarVersion}`;
 
   return (
     <article
       style={elemStyle}
       className={`novelComment ${sizeClass}`}
-      itemScope
       itemType="https://schema.org/Comment"
+      itemProp="review"
     >
       <div className="commentHead">
         <a
           href={`/viewprofile?id=${comment.author?.id}`}
-          itemProp="author"
           target="_blank"
           rel="noreferrer"
         >
@@ -62,7 +61,7 @@ const Comment: FC<ICommentProps> = ({
               target="_blank"
               rel="noreferrer"
             >{`${authorNameHandled}`}</a>
-            {replyToNameHandled && !checkIsMobile() ? (
+            {replyToNameHandled && !isMobile ? (
               <>
                 <span style={{ margin: '0 4px' }}>→</span>
                 <a
@@ -77,7 +76,7 @@ const Comment: FC<ICommentProps> = ({
               ''
             )}
           </div>
-          <p itemType="https://schema.org/Date" title="Дата публикации">
+          <p itemProp="datePublished" title="Дата публикации">
             {comment.date}
           </p>
         </div>
@@ -93,15 +92,15 @@ const Comment: FC<ICommentProps> = ({
             }}
           >
             {!isReplying ? (
-              <img src="icons/reply.png" alt="reply" />
+              <img src="/icons/reply.png" alt="reply" />
             ) : (
-              <img src="icons/cancel.png" alt="cancel replying" />
+              <img src="/icons/cancel.png" alt="cancel replying" />
             )}
           </button>
         </div>
       </div>
       <div className="commentBody">
-        <p className="commentText" itemProp="text">
+        <p className="commentText" itemProp="reviewBody">
           {comment.text}
         </p>
         {comment.img && <img src={comment.img} alt="commentImage" />}

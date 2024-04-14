@@ -1,4 +1,4 @@
-"use client"
+'use client'
 
 import { FC } from 'react';
 
@@ -7,7 +7,7 @@ import './ErrorFallback.css';
 
 interface IErrorFallbackProps {}
 
-const ErrorFallback: FC<IErrorFallbackProps> = () => {
+const ErrorFallback: FC<IErrorFallbackProps> = (props) => {
   return (
     <div className="errorFallback">
       <h2>Злостные баги что-то сломали ! Перезагрузите страницу</h2>

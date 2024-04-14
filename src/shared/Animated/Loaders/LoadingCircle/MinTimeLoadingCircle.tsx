@@ -1,3 +1,5 @@
+'use client'
+
 import { FC, useEffect, useRef, useState } from 'react';
 
 import LoaderStatus from '../utilities/LoaderStatus';

@@ -5,11 +5,11 @@
   "scripts": {
     "dev": "next dev -p 6969",
     "build": "next build",
-    "start": "next start",
+    "start": "next start -p 6969",
     "lint": "next lint"
   },
   "dependencies": {
-    "@iluhander/uwu-react": "^1.15.1",
+    "@iluhander/uwu-react": "^2.1.0",
     "axios": "^1.6.8",
     "mongoose": "^8.2.3",
     "next": "14.1.4",

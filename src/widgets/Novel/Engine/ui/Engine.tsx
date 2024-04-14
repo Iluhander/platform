@@ -1,11 +1,13 @@
+'use client'
+
 /* eslint prefer-const:"off", jsx-a11y/click-events-have-key-events:"off", jsx-a11y/no-static-element-interactions:"off" */
 import { useState, useRef, FC, CSSProperties } from 'react';
 import { Unity, useUnityContext } from 'react-unity-webgl';
+import { isMobile } from 'react-device-detect';
 
 import getUnityBuild from '../api/getUnityBuild';
 
 import { LoadingCircle } from '@/shared/Animated';
-import checkIsMobile from '@/shared/common/lib/checkIsMobile';
 import { getEngineBasePath } from '@/shared/common/lib/engine/engineContext';
 import { provideEngineAPI } from '../../../../shared/common/lib/engine/api';
 
@@ -17,7 +19,15 @@ const loadingCircleStyle: CSSProperties = {
   left: 'calc(50% - 22px)'
 };
 
-const defaultContainerStyle = checkIsMobile()
+interface IEngineProps {
+  fullScreenElems: string[];
+  playMode: boolean;
+}
+
+const Engine: FC<IEngineProps> = ({ fullScreenElems, playMode }) => {
+  const basePath = getEngineBasePath();
+
+  const defaultContainerStyle = isMobile
   ? {
       width: 'max(60vw, 300px)',
       height: 'max(34vw, 168px)'
@@ -26,14 +36,6 @@ const defaultContainerStyle = checkIsMobile()
       width: 'max(60vw, 600px)',
       height: 'max(34vw, 330px)'
     };
-
-interface IEngineProps {
-  fullScreenElems: string[];
-  playMode: boolean;
-}
-
-const Engine: FC<IEngineProps> = ({ fullScreenElems, playMode }) => {
-  const basePath = getEngineBasePath();
 
   const defaultCompStyle = {
     containerStyle: defaultContainerStyle,

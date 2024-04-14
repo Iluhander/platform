@@ -79,7 +79,7 @@ const CommentModMenu: FC<ICommentModMenuProps> = ({ commentId }) => {
     case ECommentModMenuStatus.DELETED:
       return (
         <div className="commentModMenu">
-          <img src="icons/cancel.png" alt="Deleted" />
+          <img src="/icons/cancel.png" alt="Deleted" />
         </div>
       );
     default:

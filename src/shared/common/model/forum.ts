@@ -8,3 +8,7 @@ export interface IPost {
   commentsCount: number;
   hidden: boolean;
 }
+
+export interface IForumSearch {
+  id: string;
+}

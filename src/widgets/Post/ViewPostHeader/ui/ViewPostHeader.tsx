@@ -10,7 +10,7 @@ const ViewPostHeader: FC<{ data: IPost }> = ({ data }) => {
   }
 
   const subForumLink = data.subForum?.id ? (
-    <Link href={`/forum?id=${data.subForum?.id}`}>
+    <Link href={`/forum/${data.subForum?.id}`}>
       <p>{data.subForum?.name}</p>
     </Link>
   ) : (
@@ -19,7 +19,7 @@ const ViewPostHeader: FC<{ data: IPost }> = ({ data }) => {
 
   const authorLink = data.author?.username ? (
     <Link href={`/viewprofile?id=${data.author.id}`}>
-      <p>{data.author?.username}</p>
+      <p itemProp="author">{data.author?.username}</p>
     </Link>
   ) : (
     ''
@@ -28,12 +28,12 @@ const ViewPostHeader: FC<{ data: IPost }> = ({ data }) => {
   return (
     <header className="viewPostHeader">
       <img
-        src={`${process.env.REACT_APP_BACKEND}/static/post/cover/${data.id}?v=${data.coverVersion}`}
+        src={`${process.env.NEXT_PUBLIC_BACKEND}/static/post/cover/${data.id}?v=${data.coverVersion}`}
         alt=""
         className="postHeaderCover"
       />
       <div className="viewPostHeaderMeta">
-        <h2>{data.title}</h2>
+        <h2 itemProp="name">{data.title}</h2>
         <div className="viewPostHeaderMetaRow">
           {subForumLink}
           <p>•</p>

@@ -1,10 +1,10 @@
 import { useContext, useState } from 'react';
 import Link from 'next/link';
+import { isMobile } from 'react-device-detect';
 
 // Utilities.
 import logOutApi from '@/shared/common/api/http/auth/logOutApi';
 import { EUserDataStatus, UserDataContext } from '@/shared/common/lib/user/userData';
-import checkIsMobile from '@/shared/common/lib/checkIsMobile';
 import SmoothHidingItemStatus from '@/shared/Animated/SmoothItem/SmoothHidingItemStatus';
 import userSession from '@/shared/common/lib/user/userSession';
 import { AuxiliaryDataContext } from '@/shared/common/lib/auxiliary/auxiliaryData';
@@ -68,7 +68,7 @@ export default function NavUserMenu() {
     if (userData.role === 'dev') {
       devElem = (
         <>
-          <Link href="console">⌘ Консоль</Link>
+          <Link href="/console">⌘ Консоль</Link>
         </>
       );
     }
@@ -76,14 +76,14 @@ export default function NavUserMenu() {
     if (userData.role === 'mod') {
       modElem = (
         <>
-          <Link href="modhiddennovels">❆ Скрытые новеллы</Link>
-          <Link href="modhiddenposts">❆ Скрытые посты</Link>
-          <Link href="modbanned">⌑ Заблокированные</Link>
+          <Link href="/modhiddennovels">❆ Скрытые новеллы</Link>
+          <Link href="/modhiddenposts">❆ Скрытые посты</Link>
+          <Link href="/modbanned">⌑ Заблокированные</Link>
         </>
       );
     }
   } else if (userData.status === EUserDataStatus.NOT_AUTHENTICATED) {
-    authElem = <SpanList href="login" text="Войти" className="navUserMenuSpanList" />;
+    authElem = <SpanList href="/login" text="Войти" className="navUserMenuSpanList" />;
   } else {
     authElem = <LoadingDots />;
   }
@@ -104,7 +104,7 @@ export default function NavUserMenu() {
       }}
     >
       {featureElem}
-      {!checkIsMobile() ? <a href="mynovels">{navIcon}</a> : <div>{navIcon}</div>}
+      {!isMobile ? <a href="/mynovels">{navIcon}</a> : <div>{navIcon}</div>}
       <SmoothHidingItem
         className="navUserList"
         status={userListStatus}

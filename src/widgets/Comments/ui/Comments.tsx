@@ -1,12 +1,14 @@
+'use client'
+
 import { FC, useContext, useMemo, useRef, useState } from 'react';
+import { BrowserView, MobileOnlyView } from 'react-device-detect';
 
 // Utilities.
-import checkIsMobile from '@/shared/common/lib/checkIsMobile';
 import { CommentsContext } from '@/shared/common/lib/comment/CommentsContext';
 import { UserDataContext, EUserDataStatus } from '@/shared/common/lib/user/userData';
 import useShowModal from '@/shared/Modal/lib/useShowModal';
 import { EShowModalType } from '@/shared/Modal/lib';
-import { commentsPerPage } from '@/backend/shared/utilities/constants';
+import { commentsPerPage } from '@/shared/common/model/constants';
 
 // Components.
 import { CommentsList } from '@/entities/Comments/CommentsList';
@@ -42,18 +44,36 @@ const Comments: FC<{ count?: number }> = ({ count = Infinity }) => {
     [currentlyReplyingTo, userData]
   );
 
+  const list = (
+    <>
+      <CommentsList
+        CommentBlock={CommentBlock}
+        CommentForm={CommentForm}
+      />
+      {maxCount === 0 ? <p>Пока что комментариев нет</p> : <div />}
+    </>
+  );
+
   return (
     <CommentsContext.Provider value={context}>
-      <section className={`novelComments ${checkIsMobile() ? 'novelCommentsMobile' : ''}`}>
-        <div className={checkIsMobile() ? 'commentSizedMobile' : 'commentSized'}>
-          <h2>Комментарии{maxCount && maxCount !== Infinity ? ` (${maxCount})` : ''}:</h2>
-        </div>
-        <CommentsList
-          CommentBlock={CommentBlock}
-          CommentForm={CommentForm}
-        />
-        {maxCount === 0 ? <p>Пока что комментариев нет</p> : <div />}
-      </section>
+      <BrowserView>
+        <section className="novelComments">
+          <div className="commentSized">
+            <h2>
+              Комментарии{maxCount && maxCount !== Infinity ? <span itemProp="reviewCount"> ${maxCount}</span> : ''}:
+            </h2>
+          </div>
+          {list}
+        </section>
+      </BrowserView>
+      <MobileOnlyView>
+        <section className="novelComments novelCommentsMobile">
+          <div className="commentSizedMobile">
+            <h2>Комментарии{maxCount && maxCount !== Infinity ? <span itemProp="reviewCount"> ${maxCount}</span> : ''}:</h2>
+          </div>
+          {list}
+        </section>
+      </MobileOnlyView>
     </CommentsContext.Provider>
   );
 };

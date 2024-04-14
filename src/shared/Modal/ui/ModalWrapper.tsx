@@ -17,7 +17,7 @@ export default function ModalWrapper() {
   const { variant, status, propsData } = modalData;
 
   if (status === EModalStatus.NO_MODAL) {
-    return '';
+    return <div />;
   }
 
   let modal = <div></div>;
@@ -41,7 +41,7 @@ export default function ModalWrapper() {
       modal = <GlobalModal {...propsData} />;
       break;
     default:
-      return '';
+      return <div />;
   }
 
   // @ts-ignore

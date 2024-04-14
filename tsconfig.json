@@ -21,6 +21,6 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/shared/Modal/ui/GlobalModal/tmp.js", "src/features/Novel/NovelModMenu/lib/index.js"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/shared/Modal/ui/GlobalModal/tmp.js", "src/features/Novel/NovelModMenu/lib/index.js", "src/app/novel/not-found.js"],
   "exclude": ["node_modules"]
 }

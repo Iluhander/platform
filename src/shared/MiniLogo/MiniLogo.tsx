@@ -17,7 +17,7 @@ export default function MiniLogo({
   if (noLink) {
     return (
       <img
-        src="favicon.png"
+        src="/favicon.png"
         alt="UwU novels"
         className={`miniLogo ${className}`}
       />
@@ -28,7 +28,7 @@ export default function MiniLogo({
   if (withSecret) {
     secret = (
       <img
-        src="favicon2.png"
+        src="/favicon2.png"
         alt="UwU secret"
         className={`secret ${className}`}
       />
@@ -38,7 +38,7 @@ export default function MiniLogo({
   return (
     <a href={link}>
       <div className={`miniLogo ${className}`}>
-        <img src="favicon.png" alt="UwU market" />
+        <img src="/favicon.png" alt="UwU market" />
         {secret}
       </div>
     </a>

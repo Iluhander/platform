@@ -1,19 +1,19 @@
+'use client'
+
 import Link from 'next/link';
-import { useSearchParams } from 'next/navigation';
 import { FC } from 'react';
 
 interface IForumNavContentProps {
   content: any[];
+  selectedSubForumId: string;
 }
 
-const ForumNavContent: FC<IForumNavContentProps> = ({ content }) => {
-  const params = useSearchParams();
-
+const ForumNavContent: FC<IForumNavContentProps> = ({ content, selectedSubForumId }) => {
   return (
     <>
       {content.map((forumData: any) => {
-        const curLink = forumData.name === 'Главная' ? '/forum' : `/forum?id=${forumData.id}`;
-        const isActual = forumData.id === params.get('id');
+        const curLink = forumData.name === 'Главная' ? '/forum' : `/forum/${forumData.id}`;
+        const isActual = forumData.id === selectedSubForumId;
 
         return (
           <div className="forumNavItem" key={`fn${forumData.id}`}>
@@ -21,7 +21,7 @@ const ForumNavContent: FC<IForumNavContentProps> = ({ content }) => {
               <span className="forumNavItemArrow">→ </span>
               {forumData.name}
             </Link>
-            {forumData.subForums ? <ForumNavContent content={forumData.subForums} /> : <div />}
+            {forumData.subForums ? <ForumNavContent content={forumData.subForums} selectedSubForumId={selectedSubForumId} /> : <div />}
           </div>
         );
       })}

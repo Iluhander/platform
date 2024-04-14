@@ -1,3 +1,5 @@
+'use client'
+
 import React, { CSSProperties, FC, useEffect, useRef } from 'react';
 
 import SmoothHidingItemStatus from './SmoothHidingItemStatus';
@@ -51,9 +53,11 @@ const SmoothHidingItem: FC<ISmoothHidingItemProps> = (props) => {
     innerClassName += ' opacityDisappear';
   }
 
-  const modifiedProps = { ...props, style: innerStyle, className: innerClassName };
+  const modifiedProps = { style: innerStyle, className: innerClassName };
 
-  return <div {...modifiedProps} />;
+  return (
+    <div {...modifiedProps}>{props.children}</div>
+  );
 }
 
 export default SmoothHidingItem;

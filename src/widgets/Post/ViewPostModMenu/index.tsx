@@ -1,3 +1,5 @@
+'use client'
+
 import React, { FC, Suspense, useContext } from 'react';
 
 import { UserDataContext, EUserDataStatus } from '@/shared/common/lib/user/userData';

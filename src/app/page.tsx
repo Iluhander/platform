@@ -1,56 +1,32 @@
-"use client"
+import { INovel, INovelSearch, IPage } from "@/shared/common/model";
+import MarketPlace from "@/views/Market/page";
+import axios from "axios";
+import { Metadata } from "next";
 
-import { useEffect, useState } from 'react';
+type IMarketPlaceDataWrapperProps = {
+  searchParams: INovelSearch;
+}
 
-// Components.
-import AppWrapper from '@/appWrapper';
-import { MarketPlaceSearch } from '@/widgets/MarketPlace/MarketPlaceSearch';
-import MarketPlaceMainContent from '@/widgets/MarketPlace/MarketPlaceMainContent/ui/MarketPlaceMainContent';
-
-// Utilities.
-import checkIsMobile from '@/shared/common/lib/checkIsMobile';
-import useURLState from '@/shared/common/lib/hooks/useURLState';
-
-// Styles.
-import './MarketPlaceNovels.scss';
-import './MarketPlaceNovelsMobile.scss';
-
-const defaultSearch = {
-  title: '',
-  genre: 'Любой жанр',
-  author: 'Всех авторов',
-  userID: '',
-  sortBy: 'Новизне'
+export const metadata: Metadata = {
+  title: "Визуальные новеллы | UwU Novels",
+  applicationName: 'UwU Novels',
+  description: "Находите визуальные новеллы и играйте в них онлайн",
+  keywords: ['Новелла', 'Визуальная новелла', 'Аниме', 'играть', 'форум', 'Visual Novel', 'UwU Novels'],
+  icons: {
+    icon: '/favicon.png'
+  }
 };
 
-export default function MarketPlace() {
-  const [search, setSearch] = useURLState(defaultSearch);
+export default async function MarketPlaceDataWrapper(props: IMarketPlaceDataWrapperProps) {
+  let initalData: IPage<INovel> = { index: 0, data: [], maxCount: 0 };
+  
+  try {
+    const { data } = await axios.post(`${process.env.NEXT_PUBLIC_BACKEND}/novel/novels-list`, props.searchParams); 
 
-  // @ts-ignore
-  const [searchHidden, setSearchHidden] = useState(checkIsMobile());
+    initalData = data;
+  } catch (e) {
+    console.log(e);
+  }
 
-  useEffect(() => {
-    if (window && window.innerWidth < 600) {
-      setSearchHidden(true);
-    }
-  }, []);
-
-  return (
-    <AppWrapper>
-      <MarketPlaceSearch
-        defaultSearch={defaultSearch}
-        search={search}
-        setSearch={setSearch}
-        hidden={searchHidden}
-        setHidden={setSearchHidden}
-      />
-      <main
-        className={`${checkIsMobile() ? 'marketNovelsMobile' : 'marketNovels'} ${
-          searchHidden ? '' : 'resizedMarketNovels'
-        }`}
-      >
-        <MarketPlaceMainContent search={search} />
-      </main>
-    </AppWrapper>
-  );
+  return <MarketPlace initialData={initalData} />;
 }

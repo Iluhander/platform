@@ -1,25 +1,33 @@
+'use client'
+
 import Link from 'next/link';
-import { useEffect, useMemo, useRef } from 'react';
-import { useSearchParams } from 'next/navigation';
+import { FC, useEffect, useMemo, useRef } from 'react';
+import { useParams } from 'next/navigation';
 import InfiniteScroll from 'react-infinite-scroll-component';
-import { GetArrStatus, ReqStatus } from '@iluhander/uwu-react';
+import { GetArrStatus } from '@iluhander/uwu-react';
 import { IPage } from '@/shared/common/model';
 import { IPost } from '@/shared/common/model/forum';
 import useGetPostsPage from '../api/useGetPostsPage';
 import useGetTargetsReactions from '@/widgets/MarketPlace/MarketPlaceMainContent/api/useGetTargetsReactions';
 import getPostsReactions from '../api/getPostsReactions';
-import { postsPageDefaultSize } from '@/backend/shared/utilities/constants';
+import { postsPageDefaultSize } from '@/shared/common/model/constants';
 
 import { LoadingCircle } from '@/shared/Animated';
 import { PostCard } from '@/features/Post/PostCard';
 
 import './Feed.scss';
+import { D } from '@/shared/common/lib/dev/log';
 
-export default function Feed() {
-  const params = useSearchParams();
-  const subForumId = params.get('id');
+interface IFeedProps {
+  initialData: IPage<IPost>;
+}
 
-  const { data: pagesData, status, exec, setData } = useGetPostsPage(subForumId);
+const Feed: FC<IFeedProps> = ({ initialData }) => {
+  const params = useParams();
+  const subForumId = params.id as string || '';
+  const prevSubForumId = useRef<string>();
+
+  const { data: pagesData, status, exec, setData } = useGetPostsPage(subForumId, initialData);
   const { data, maxCount } = pagesData as IPage<IPost>;
   const { reactions } = useGetTargetsReactions(
     data.slice(-1 * postsPageDefaultSize).map(({ id }) => id),
@@ -33,12 +41,17 @@ export default function Feed() {
   };
 
   useEffect(() => {
-    if (status !== ReqStatus.INITIALIZED) {
-      setData({ data: [], maxCount: Infinity });
-    }
-
-    loadMore(0);
     window.scrollTo(0, 0);
+    if (!prevSubForumId.current) {
+      prevSubForumId.current = subForumId;
+      return;
+    }
+    
+    if (prevSubForumId.current !== subForumId) {
+      prevSubForumId.current = subForumId;
+      setData({ index: 0, data: [], maxCount: Infinity });
+      loadMore(0);
+    }
   }, [subForumId]);
 
   const infiniteScrollProps = useMemo(
@@ -59,12 +72,6 @@ export default function Feed() {
           </p>
         </main>
       );
-    case GetArrStatus.INITIALIZED:
-      return (
-        <div className="feedMain">
-          <LoadingCircle />
-        </div>
-      );
     default:
       return (
         <InfiniteScroll
@@ -83,4 +90,6 @@ export default function Feed() {
         </InfiniteScroll>
       );
   }
-}
+};
+
+export default Feed;

@@ -1,3 +1,5 @@
+'use client'
+
 import { FC, ReactNode } from 'react';
 import { Reaction, Reactions } from '@/shared/Reactions';
 import userSession from '@/shared/common/lib/user/userSession';

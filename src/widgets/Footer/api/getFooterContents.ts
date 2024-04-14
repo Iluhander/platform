@@ -1,5 +1,3 @@
-/* eslint-disable prettier/prettier */
-
 import { IFooterColumn } from "../lib/types";
 
 /**
@@ -30,7 +28,7 @@ import { IFooterColumn } from "../lib/types";
  */
 function getFooterContents() {
   const leadRow = {
-    link: '/post?id=6517e0a5bc120ff351b1103d',
+    link: '/post/6517e0a5bc120ff351b1103d',
     label: 'UwU Джем'
   };
 
@@ -39,7 +37,7 @@ function getFooterContents() {
       header: '',
       rows: [
         {
-          link: '/market',
+          link: '/',
           elements: [
             {
               text: 'Играть !! →'

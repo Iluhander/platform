@@ -1,14 +1,13 @@
-import useGetForumNavContent from '../api/useGetForumNavContent';
 import ForumNavContent from './ForumNavContent';
 
 import './ForumNav.scss';
 
-export default function ForumNav() {
-  const content = useGetForumNavContent();
-
+const ForumNav: typeof ForumNavContent = (props) => {
   return (
     <nav className="forumNav">
-      <ForumNavContent content={content} />
+      <ForumNavContent {...props} />
     </nav>
   );
-}
+};
+
+export default ForumNav;

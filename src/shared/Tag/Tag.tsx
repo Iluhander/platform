@@ -8,6 +8,7 @@ interface ITagProps {
   etc?: Record<string, any>;
 }
 
+// eslint-disable-next-line react/display-name
 const Tag = forwardRef((props: ITagProps, ref: any) =>
   props.href ? (
     <a href={props.href} ref={ref} {...(props.etc || {})}>
