@@ -1,7 +1,6 @@
 /* eslint jsx-a11y/click-events-have-key-events: "off", jsx-a11y/no-noninteractive-element-interactions: "off", no-loop-func: "off" */
 
 import { CSSProperties, FC, FormEventHandler, useContext, useEffect } from 'react';
-import { isMobile } from 'react-device-detect';
 
 // Utilities.
 import keyDownHandler from '@/shared/common/lib/keyDownHandler';
@@ -26,7 +25,7 @@ interface ICommentFormMockProps {
 const CommentFormMock: FC<ICommentFormMockProps> = ({ text, href, tag, style }) => {
   return (
     <div
-      className={`commentFormMock ${isMobile ? 'commentSizedMobile' : 'commentSized'}`}
+      className="commentFormMock commentSized"
       style={style}
     >
       <SpanList href={href} text={text} tag={tag} />
@@ -106,7 +105,7 @@ const CommentForm: FC<ICommentFormProps> = ({ callReplyTo, callCommentsRefetch, 
 
   return (
     <form
-      className={`novelCommentForm ${isMobile ? 'commentSizedMobile' : 'commentSized'} ${
+      className={`novelCommentForm commentSized ${
         className || ''
       }`}
       onSubmit={onCommentSubmit}
@@ -119,7 +118,6 @@ const CommentForm: FC<ICommentFormProps> = ({ callReplyTo, callCommentsRefetch, 
         maxLength={256}
         cols={40}
         rows={4}
-        style={{ height: '72px', maxWidth: isMobile ? '290px' : 'unset' }}
         required
       />
       <div>{sendElem}</div>

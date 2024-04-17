@@ -1,6 +1,5 @@
 import { useContext, useState } from 'react';
 import Link from 'next/link';
-import { isMobile } from 'react-device-detect';
 
 // Utilities.
 import logOutApi from '@/shared/common/api/http/auth/logOutApi';
@@ -8,6 +7,7 @@ import { EUserDataStatus, UserDataContext } from '@/shared/common/lib/user/userD
 import SmoothHidingItemStatus from '@/shared/Animated/SmoothItem/SmoothHidingItemStatus';
 import userSession from '@/shared/common/lib/user/userSession';
 import { AuxiliaryDataContext } from '@/shared/common/lib/auxiliary/auxiliaryData';
+import Device from '@/shared/common/ui/Device';
 
 // Components.
 import { LoadingDots, SpanList, SmoothHidingItem } from '@/shared/Animated';
@@ -104,7 +104,13 @@ export default function NavUserMenu() {
       }}
     >
       {featureElem}
-      {!isMobile ? <a href="/mynovels">{navIcon}</a> : <div>{navIcon}</div>}
+      <Device>
+        {({ isMobile }) => isMobile ? (
+        <a href="/mynovels">{navIcon}</a>
+        ) : (
+          <div>{navIcon}</div>
+        )}
+      </Device>
       <SmoothHidingItem
         className="navUserList"
         status={userListStatus}

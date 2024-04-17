@@ -5,7 +5,6 @@ import useGetCommentsPage from '@/shared/common/api/comment/useGetCommentsPage';
 import { LoadingCircle } from '@/shared/Animated';
 import { CommentsContext } from '@/shared/common/lib/comment/CommentsContext';
 import { UserDataContext, EUserDataStatus } from '@/shared/common/lib/user/userData';
-import { isMobile } from 'react-device-detect';
 
 // Components.
 import { SpanList } from '@/shared/Animated';
@@ -106,9 +105,7 @@ const CommentsList: FC<ICommentsListProps> = ({ CommentBlock, CommentForm }) => 
   } else if (userData.status === EUserDataStatus.NOT_AUTHENTICATED) {
     mainForm = (
       <div
-        className={`unauthorizedFormMock ${
-          isMobile ? 'commentSizedMobile' : 'commentSized'
-        }`}
+        className="unauthorizedFormMock commentSized"
       >
         <SpanList text="Войдите, чтобы оставить комментарий" href="/login" />
       </div>
@@ -116,9 +113,7 @@ const CommentsList: FC<ICommentsListProps> = ({ CommentBlock, CommentForm }) => 
   } else {
     mainForm = (
       <div
-        className={`unauthorizedFormMock ${
-          isMobile ? 'commentSizedMobile' : 'commentSized'
-        }`}
+        className="unauthorizedFormMock commentSized"
       >
         <SpanList text="Активируйте аккаунт, чтобы оставить комментарий" tag="h3" />
       </div>

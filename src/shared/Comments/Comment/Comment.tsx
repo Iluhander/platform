@@ -1,7 +1,7 @@
 import { CSSProperties, FC, ReactNode } from 'react';
-import { isMobile } from 'react-device-detect';
 import { DefaultUserName } from '@/shared/common/lib/user/userData';
 import { IComment } from '@/shared/common/model/comment';
+import Device from '@/shared/common/ui/Device';
 
 import './Comment.scss';
 
@@ -26,9 +26,7 @@ const Comment: FC<ICommentProps> = ({
 }) => {
   let sizeClass = 'commentSized';
   if (isOnLowerLevel) {
-    sizeClass = isMobile ? 'lowerLevelSizedMobile' : 'lowerLevelSized';
-  } else if (isMobile) {
-    sizeClass = 'commentSizedMobile';
+    sizeClass = 'lowerLevelSized';
   }
 
   const authorNameHandled = handleUserName(comment.author?.username);
@@ -61,19 +59,23 @@ const Comment: FC<ICommentProps> = ({
               target="_blank"
               rel="noreferrer"
             >{`${authorNameHandled}`}</a>
-            {replyToNameHandled && !isMobile ? (
-              <>
-                <span style={{ margin: '0 4px' }}>→</span>
-                <a
-                  href={`/viewprofile?id=${comment.replyToComment.author?.id}`}
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  {`${replyToNameHandled}`}
-                </a>
-              </>
-            ) : (
-              ''
+            {replyToNameHandled && (
+              <Device>
+                {({ isMobile }) => !isMobile ? (
+                  <>
+                    <span style={{ margin: '0 4px' }}>→</span>
+                    <a
+                      href={`/viewprofile?id=${comment.replyToComment.author?.id}`}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      {`${replyToNameHandled}`}
+                    </a>
+                  </>
+                ) : (
+                  <div />
+                )}
+              </Device>
             )}
           </div>
           <p itemProp="datePublished" title="Дата публикации">

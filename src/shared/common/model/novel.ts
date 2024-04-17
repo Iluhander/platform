@@ -16,6 +16,6 @@ export interface INovelSearch {
   title: string;
   genre: string;
   author: string;
-  sortBy: any;
+  sortBy: string;
   userID: string;
 }

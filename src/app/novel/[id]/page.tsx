@@ -1,7 +1,6 @@
 import $serverApi from "@/shared/common/api/http/serverApi";
-import { INovel } from "@/shared/common/model";
 import NovelPage from "@/views/Novel";
-import { AxiosResponse } from "axios";
+import { checkSuccessStatus } from "@iluhander/uwu-react";
 import { notFound } from "next/navigation";
 
 interface INovelPageProps {
@@ -9,17 +8,13 @@ interface INovelPageProps {
 }
 
 export async function generateMetadata(props: INovelPageProps) {
-  let res: AxiosResponse;
-  try {
-    res = await $serverApi.get(`/novel/${props.params.id}`);
-  } catch (e) {
+  let { data, status } = await $serverApi.get(`/novel/${props.params.id}`);
+  if (!checkSuccessStatus(status)) {
     return {};
   }
-  
-  const data = res.data;
 
   const title = `${(data.title || 'Визуальная новелла')} | UwU Novels`;
-  const description = `Играйте онлайн в визуальную новеллу новеллу от ${data.author?.username}`;
+  const description = `Играйте онлайн в визуальную новеллу ${(data.title || '')} ${data.author?.username ? 'от ' + data.author.username : '' }`;
 
   return {
     title,
@@ -30,31 +25,34 @@ export async function generateMetadata(props: INovelPageProps) {
     publisher: 'UwU Novels',
     openGraph: {
       type: 'website',
+      url: `https://uwunovels.com/novel/${props.params.id}`,
       siteName: 'UwU Novels',
       locale: 'ru_RU',
       title,
       description,
       images: [{
-        url: `${process.env.NEXT_PUBLIC_BACKEND}/static/post/cover/${data.id}?v=${data.coverVersion}`
+        url: `${process.env.NEXT_PUBLIC_BACKEND}/static/cover/novel/${data.id}?v=${data.coverVersion}`
       }],
+    },
+    twitter: {
+      title,
+      description
     }
   };
 } 
 
 export default async function Page(props: INovelPageProps) {
-  let novelData: INovel | undefined;
-  try {
-    const { data } = await $serverApi.get(`/novel/${props.params.id}`);
-    novelData = data;
-  } catch (e: any) {
-    if (e.response.status === 404) {
+  const { data, status } = await $serverApi.get(`/novel/${props.params.id}`);
+
+  if (!checkSuccessStatus(status)) {
+    if (status === 404) {
       notFound();
-    } else {
-      throw e;
     }
+
+    throw new Error();
   }
   
   return (
-    <NovelPage novelData={novelData as INovel} />
+    <NovelPage novelData={data} />
   );
 }

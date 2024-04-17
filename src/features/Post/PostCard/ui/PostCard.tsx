@@ -51,7 +51,7 @@ const PostCard: FC<IPostCardProps> = ({ data, reaction }) => {
   return (
     <Link href={`/post/${data.id}`}>
       <article
-        className={`postCard ${isMobile ? 'postCardMobile' : ''}`}
+        className="postCard"
         itemScope
         itemType="https://schema.org/Article"
       >

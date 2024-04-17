@@ -16,7 +16,6 @@ import { LoadingCircle } from '@/shared/Animated';
 import { PostCard } from '@/features/Post/PostCard';
 
 import './Feed.scss';
-import { D } from '@/shared/common/lib/dev/log';
 
 interface IFeedProps {
   initialData: IPage<IPost>;

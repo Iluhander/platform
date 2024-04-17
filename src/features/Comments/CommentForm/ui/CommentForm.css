@@ -24,6 +24,7 @@
 }
 
 .novelCommentForm textarea {
+  height: 72px;
   padding: 14px;
 }
 
@@ -74,4 +75,16 @@
   display: flex;
   justify-content: center;
   text-align: center;
+}
+
+@media (orientation: landscape) {
+  .novelCommentForm textarea {
+    max-width: unset;
+  }
+}
+
+@media (orientation: portrait) {
+  .novelCommentForm textarea {
+    max-width: 290px;
+  }
 }

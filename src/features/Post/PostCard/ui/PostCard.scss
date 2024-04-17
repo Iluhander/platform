@@ -74,11 +74,13 @@
   }
 }
 
-.postCardMobile {
-  height: 190px;
-  width: 318px;
-
-  h2 {
-    font-size: 22px;
-  }
+@media (max-width: 540px) {
+  .postCard {
+    height: 190px;
+    width: 318px;
+  
+    h2 {
+      font-size: 22px;
+    }
+  }  
 }

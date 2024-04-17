@@ -1,0 +1,5 @@
+#!/bin/bash
+
+docker buildx build --platform linux/amd64 -t root/platform .
+docker tag root/platform cr.yandex/crpacequf5f08pos62cf/platform:prod
+docker push cr.yandex/crpacequf5f08pos62cf/platform:prod

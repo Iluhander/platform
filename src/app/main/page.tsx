@@ -11,6 +11,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     type: 'website',
+    url: `https://uwunovels.com/main`,
     siteName: 'UwU Novels',
     locale: 'ru_RU',
     title: 'Визуальные новеллы | UwU Novels',
@@ -18,6 +19,10 @@ export const metadata: Metadata = {
     images: [{
       url: '/opengraph-image.png'
     }]
+  },
+  twitter: {
+    title: 'Визуальные новеллы | UwU Novels',
+    description: "Находите и играйте в визуальные новеллы онлайн"
   }
 };
 

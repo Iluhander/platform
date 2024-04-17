@@ -59,6 +59,6 @@ export default function NavMakeStory() {
         />
       );
     default:
-      return <a href="mynovels">Создать историю</a>;
+      return <a href="/mynovels">Создать историю</a>;
   }
 }

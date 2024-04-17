@@ -1,3 +1,5 @@
+'use client'
+
 import { FC } from 'react';
 import { isMobile } from 'react-device-detect';
 import { Feed } from '@/widgets/Forum/Feed';

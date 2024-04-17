@@ -136,15 +136,16 @@
 // Hiding filters css.
 
 .visibilityToggler {
-  margin: 8px 0 0 6px;
+  margin: 6px 0 0 2px;
   top: 84px;
 
   border-radius: 50%;
   background: #05060E;
+  opacity: 0.6;
 
   img {
-    width: 30px;
-    height: 30px;
+    width: 28px;
+    height: 28px;
   }
 
   img:last-of-type {

@@ -5,6 +5,7 @@ import { Dispatch, FC, SetStateAction, useContext, useRef } from 'react';
 import extractByRef from '@/shared/common/lib/utils/extractByRef';
 import { UserDataContext, EUserDataStatus } from '@/shared/common/lib/user/userData';
 import { INovelSearch } from '@/shared/common/model';
+import { isMobile } from 'react-device-detect';
 
 import MarketPlaceAuthorFilter from '@/features/Market/MarketPlaceAuthorFilter';
 
@@ -20,7 +21,6 @@ interface IMarketPlaceSearch {
 
 const MarketPlaceSearch: FC<IMarketPlaceSearch> = ({ defaultSearch, search, setSearch, hidden, setHidden }) => {
   const { userData } = useContext(UserDataContext);
-  const isMobile = false;
   const filtersForm = useRef<HTMLFormElement>(null);
   const curTimeout = useRef<NodeJS.Timeout | null>(null);
 

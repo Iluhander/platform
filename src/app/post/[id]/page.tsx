@@ -2,6 +2,7 @@ import $serverApi from "@/shared/common/api/http/serverApi";
 import { IPost } from "@/shared/common/model";
 import ViewPostWrapper from "@/views/Post/page";
 import getPostContent from "@/widgets/Post/ViewPostContent/api/getPostContent";
+import { checkSuccessStatus } from "@iluhander/uwu-react";
 import { notFound } from "next/navigation";
 
 interface IPostPageProps {
@@ -9,11 +10,8 @@ interface IPostPageProps {
 }
 
 export async function generateMetadata(props: IPostPageProps) {
-  let data: IPost;
-  try {
-    const res = await $serverApi.get(`/forum/post/view/${props.params.id}`);
-    data = res.data;
-  } catch (e) {
+  let { data, status } = await $serverApi.get(`/forum/post/view/${props.params.id}`);
+  if (!checkSuccessStatus(status)) {
     return {};
   }
 
@@ -29,12 +27,13 @@ export async function generateMetadata(props: IPostPageProps) {
     publisher: 'UwU Novels',
     openGraph: {
       type: 'website',
+      url: `https://uwunovels.com/post/${props.params.id}`,
       siteName: 'UwU Novels',
       locale: 'ru_RU',
       title,
       description,
       images: [{
-        url: `${process.env.NEXT_PUBLIC_BACKEND}/static/cover/novel/${data.id}?v=${data.coverVersion}`
+        url: `${process.env.NEXT_PUBLIC_BACKEND}/static/post/cover/${data.id}?v=${data.coverVersion}`
       }],
     }
   };
@@ -44,20 +43,20 @@ export default async function PostPage(props: IPostPageProps) {
   let postData: IPost | undefined;
   let content: string | null;
 
-  try {
-    const [dataRes, contentRes] = await Promise.all([
-      $serverApi.get(`/forum/post/view/${props.params.id}`),
-      getPostContent(props.params.id)
-    ]);
+  const [dataRes, contentRes] = await Promise.all([
+    $serverApi.get(`/forum/post/view/${props.params.id}`),
+    getPostContent(props.params.id)
+  ]);
 
-    postData = dataRes.data;
-    content = contentRes;
-  } catch (e: any) {
-    if (e.response.status === 404) {
+  postData = dataRes.data;
+  content = contentRes;
+
+  if (!checkSuccessStatus(dataRes.status)) {
+    if (dataRes.status === 404) {
       notFound();
-    } else {
-      throw e;
     }
+
+    throw new Error();
   }
 
   return <ViewPostWrapper data={postData as IPost} content={content} />;

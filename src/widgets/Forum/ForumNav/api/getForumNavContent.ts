@@ -2,6 +2,9 @@ import $serverApi from "@/shared/common/api/http/serverApi";
 
 export default async function getForumNavContent() {
   const { data } = await $serverApi.get(`/forum/forums`);
+  if (!data) {
+    return null;
+  }
 
   const { forums } = data;
   forums.forEach((forum: any) => {

@@ -2,6 +2,7 @@ import $serverApi from "@/shared/common/api/http/serverApi";
 import { IPost, IForumSearch, IPage } from "@/shared/common/model";
 import Forum from "@/views/Forum/page";
 import getForumNavContent from "@/widgets/Forum/ForumNav/api/getForumNavContent";
+import { checkSuccessStatus } from "@iluhander/uwu-react";
 
 type IForumDataWrapperProps = {
   params: IForumSearch;
@@ -9,12 +10,13 @@ type IForumDataWrapperProps = {
 
 export async function generateMetadata(props: IForumDataWrapperProps) {
   let forumData: any;
-  try {
-    if (props.params.id) {
-      const res = await $serverApi.get(`/forum/one/${props.params.id}`);
-      forumData = res.data;
+  if (props.params.id) {
+    const { data, status } = await $serverApi.get(`/forum/one/${props.params.id}`);
+
+    if (checkSuccessStatus(status)) {
+      forumData = data;
     }
-  } catch (e) {}
+  }
 
   const title = forumData ? `${forumData.name} | Форум | UwU Novels` : 'Форум | UwU Novels';
   
@@ -28,6 +30,7 @@ export async function generateMetadata(props: IForumDataWrapperProps) {
     },
     openGraph: {
       type: 'website',
+      url: `https://uwunovels.com/forum${props.params.id ? '/' + props.params.id : ''}` ,
       siteName: 'UwU Novels',
       locale: 'ru_RU',
       title,
@@ -35,6 +38,10 @@ export async function generateMetadata(props: IForumDataWrapperProps) {
       images: [{
         url: '/opengraph-image.png'
       }]
+    },
+    twitter: {
+      title,
+      description: 'Пишите и читайте посты про визуальные новеллы'
     }
   };
 };
@@ -43,19 +50,20 @@ export default async function ForumDataWrapper(props: IForumDataWrapperProps) {
   let initalData: IPage<IPost> = { index: 0, data: [], maxCount: 0 };
   let navData: any[] = [];
 
-  try {
-    const [postsData, forumsData] = await Promise.all([
-      $serverApi.post(`/forum/post/posts-page`, {
-        subForum: props.params?.id || '',
-        sort: {}
-      }),
-      getForumNavContent()
-    ]);
+  const [postsData, forumsData] = await Promise.all([
+    $serverApi.post(`/forum/post/posts-page`, {
+      subForum: props.params?.id || '',
+      sort: { target: '' }
+    }),
+    getForumNavContent()
+  ]);
 
+  if (checkSuccessStatus(postsData.data)) {
     initalData = postsData.data;
+  }
+
+  if (forumsData) {
     navData = forumsData;
-  } catch (e) {
-    console.log(e);
   }
 
   return <Forum initialData={initalData} navData={navData} selectedSubForumId={props.params?.id || ''} />;

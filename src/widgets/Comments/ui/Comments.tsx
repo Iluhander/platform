@@ -68,7 +68,7 @@ const Comments: FC<{ count?: number }> = ({ count = Infinity }) => {
       </BrowserView>
       <MobileOnlyView>
         <section className="novelComments novelCommentsMobile">
-          <div className="commentSizedMobile">
+          <div className="commentSized">
             <h2>Комментарии{maxCount && maxCount !== Infinity ? <span itemProp="reviewCount"> ${maxCount}</span> : ''}:</h2>
           </div>
           {list}

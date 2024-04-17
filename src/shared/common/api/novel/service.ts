@@ -9,8 +9,5 @@ export async function createNovel(novelsList?: any[]) {
     const res = await $api.put(`/novel/add`);
 
     return res.data;
-  } catch (err) {
-    // @ts-ignore
-    console.err(err.response.status);
-  }
+  } catch (err) {}
 }

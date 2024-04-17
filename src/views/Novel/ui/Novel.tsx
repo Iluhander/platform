@@ -1,6 +1,5 @@
 // Libraries
 import { FC } from 'react';
-import { isMobile } from 'react-device-detect';
 
 // Utils.
 import { INovel } from '@/shared/common/model';
@@ -26,7 +25,7 @@ const Novel: FC<{ novelData: INovel }> = ({ novelData }) => {
   return (
     <div itemScope itemType="https://schema.org/Game">
       <div className="novelTopMargin" />
-      <main className={`novelBlock ${isMobile ? 'novelBlockMobile' : ''}`}>
+      <main className="novelBlock">
         <div className="novelColBlock">
           <h1 className="novelTitle" itemProp="name">
             {novelData?.title || 'Безымянная новелла'}

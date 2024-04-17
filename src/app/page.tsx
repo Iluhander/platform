@@ -1,6 +1,7 @@
+import $serverApi from "@/shared/common/api/http/serverApi";
 import { INovel, INovelSearch, IPage } from "@/shared/common/model";
 import MarketPlace from "@/views/Market/page";
-import axios from "axios";
+import { checkSuccessStatus } from "@iluhander/uwu-react";
 import { Metadata } from "next";
 
 type IMarketPlaceDataWrapperProps = {
@@ -14,18 +15,19 @@ export const metadata: Metadata = {
   keywords: ['Новелла', 'Визуальная новелла', 'Аниме', 'играть', 'форум', 'Visual Novel', 'UwU Novels'],
   icons: {
     icon: '/favicon.png'
+  },
+  openGraph: {
+    url: 'https://uwunovels.com',
   }
 };
 
 export default async function MarketPlaceDataWrapper(props: IMarketPlaceDataWrapperProps) {
   let initalData: IPage<INovel> = { index: 0, data: [], maxCount: 0 };
-  
-  try {
-    const { data } = await axios.post(`${process.env.NEXT_PUBLIC_BACKEND}/novel/novels-list`, props.searchParams); 
 
+  const params = new URLSearchParams(props.searchParams as any).toString();
+  const { data, status } = await $serverApi.post(`/novel/page?${params}`, {});
+  if (checkSuccessStatus(status)) {
     initalData = data;
-  } catch (e) {
-    console.log(e);
   }
 
   return <MarketPlace initialData={initalData} />;

@@ -71,29 +71,6 @@
   margin-top: 46px;
 }
 
-.novelBlockMobile {
-  padding: 0 0 8vh 0;
-
-  .novelTitle {
-    width: auto;
-    font-size: 18px;
-  }
-
-  .novelCover {
-    width: 298px;
-    height: 180px;
-  }
-
-  .novelDescriptionBlock {
-    min-width: 150px;
-    background: none;
-  }
-
-  .novelDataView {
-    margin-top: 10px;
-  }
-}
-
 .novelPlayMode {
   background: radial-gradient(50% 50% at 50% 50%, rgb(83, 48, 61) 43.75%, rgb(0, 0, 0));
 }
@@ -233,12 +210,6 @@
   margin: 10px 2px;
 }
 
-@media (max-width: 734px) {
-  .novelTitle {
-    margin-top: 30px;
-  }
-}
-
 .novelDataText {
   font-size: 16px;
   margin-top: auto;
@@ -251,5 +222,36 @@
 
   &:hover {
     color: var(--main-color);
+  }
+}
+
+@media (max-width: 734px) {
+  .novelTitle {
+    margin-top: 30px;
+  }
+
+  @media (orientation: portrait) {
+    .novelBlock {
+      padding: 0 0 8vh 0;
+    
+      .novelTitle {
+        width: auto;
+        font-size: 18px;
+      }
+    
+      .novelCover {
+        width: 298px;
+        height: 180px;
+      }
+    
+      .novelDescriptionBlock {
+        min-width: 150px;
+        background: none;
+      }
+    
+      .novelDataView {
+        margin-top: 10px;
+      }
+    }
   }
 }

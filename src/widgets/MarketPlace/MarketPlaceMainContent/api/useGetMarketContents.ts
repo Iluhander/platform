@@ -8,9 +8,9 @@ import { INovel, INovelSearch, IPage } from '@/shared/common/model';
 const useGetMarketContents = (search: INovelSearch, initialData: IPage<INovel>) =>
   useReq<number, IPage<INovel>>(
     (pageIndex) =>
-      $api.post('/novel/novels-list', search, {
+      $api.post('/novel/page', {}, {
         ...defaultConfig,
-        params: { pageIndex }
+        params: { ...search, pageIndex }
       }),
     {
       initialData,

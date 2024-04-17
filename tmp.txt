@@ -1,0 +1,111 @@
+upstream next-app {
+  server localhost:6969;
+}
+
+        server {
+                listen 80;
+                listen [::]:80;
+
+                server_name uwunovels.com;
+
+                add_header "Access-Control-Allow-Origin" "https://uwunovels.com" always;
+                add_header "Access-Control-Allow-Credentials" 'true' always;
+                add_header "Access-Control-Allow-Methods" "GET, POST, PUT, PATCH, DELETE, OPTIONS, HEAD";
+
+                proxy_buffering on;
+                proxy_buffer_size 16k;
+                proxy_buffers 8 16k;
+
+                client_max_body_size 5M;
+
+                location /_next/static {
+                    proxy_pass http://next-app;
+                }
+
+                location /main {
+                    proxy_pass http://next-app;
+                }
+
+                location /forum {
+                    proxy_pass http://next-app;
+                }
+
+                location /novel {
+                    proxy_pass http://next-app;
+                }
+
+                location /post {
+                    proxy_pass http://next-app;
+                            proxy_pass http://next-app;
+                }
+
+                location = / {
+                    proxy_pass http://next-app;
+                }
+
+                location /favicon.png {
+                    proxy_pass http://uwunovels.com.website.yandexcloud.net;
+                }
+        }
+
+
+
+
+
+                ssl_certificate cert.pem;
+                ssl_certificate_key key.pem;
+                ssl_protocols SSLv3 TLSv1 TLSv1.1 TLSv1.2;
+                ssl_ciphers  "RC4:HIGH:!aNULL:!MD5:!kEDH";
+
+
+-----BEGIN PRIVATE KEY-----
+MIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDk2o/ixpdmzm8G
+SEQ6qB0TOrDWBVhRiQm6QMJZ0tm+IcJRqQZRS9H43D83gDEDaEm6EeDw1RpTo9EQ
+F/EQ/gFtEwUSQ5sEVX3jtwsZXgnyIMta3Na/SaY6ErZskZLNb5NG0gCJDO8YbHa5
+CioHUQqUJk8TBAdBU8xYu9AXqLdSIGb7ad0JGm8CskKKCH3a9ZVcHYKHeRdIQ8LG
+wb5oNuctchep2HEkU1E56dgC5jsgpJpZzShetwD1aQ6h/QhvWhn2lRTT9EB41zu+
+as7npTazmmT1zC6/uphmNtYKJK5lxbco0vFuZlyuK5Z6APQJE5o+BkLScZ2jO/ht
+8PbUiSf3AgMBAAECggEBAKWlPThbngKfsOTPMfNy83iTpqOCwuZhVlUlwobZgxmH
+ver1eMknJBgI8wjtFIzu006G2lX3KVMY453OdoJiGA4nEiiiHnYIm1JTjwkRdAl5
+izd9WUKjwFmQadIznBpuhB9iqViJsBXxjA1rOfiJxCpvgBS3ebjjOqmPZ5N4Xxhl
+VQyeyM3E+6KW0TvtfgbXW6MFzSxR24zGZGQn2s5Q8IwYrPl5CmQx20rO89JB2EzH
+5IkzpxA2bz6d5CJW+ZqPgHnfFjrDKhloh1uOmKFvY2JiUQiWZ3dXCjE1If/b9dYJ
+OYcRGhmBdXuKALuyOlQIAKqj9YyMfpr6IHIo9Bvu78ECgYEA+mA8uT56Jaii5nS0
+tmKgzWZwmyWMgj8ALWj9kgo5It4wXO4Cfe8bYSzjdmeqaXm+junPsENbJ/EZyTpQ
+hrFquAcaKb3OWQB9iZ6isvE+tTs23YNC7lEvRJOlUDPZ+EqRO/ecIH8Gh4W8bgks
+bxdTJXlgQAWNuyDA0BzQIm6fgA8CgYEA6f6QTX6b1QASfaLhRXMqFxs1GFSRKXnD
+zcfofPuZZL0KojiN78TV2WcNVvUc5IE6cVJ1RoW1shb/cv7UqK0y/4jbpiY5DBQb
+m4WpY9NMxQcn6LPiCeTIwXYi+utksWO4gnGjFxQjrNmD1jp1Sciov/aC0rkxGyKb
+/pDuipZhcZkCgYABLy9aWPdO8ktC985bBoBoOFHUCgtuGkov7M02QaIfjhmAdwe/
+/L+OaB3zU2407YR/PI/k74yg1b0ffI0g9fnhQPdYtzMgrKXrXrq6SfXX+Z260oIg
+inXEx0YC6Rvg1sl1FSjB5pfrUDCh/J0fMWcNSFOyOdR/zBndYiWB5DAQ9QKBgQCN
+XCSBLIOn4itJiyTcd/5thxpEYJJxpAYOQz7IgpbgrPPHnLLirt8iP4dniRyzTv6n
+h1EiEZT6ybn5FsoSPNAaX+uSLHU6PsuO4Oi8TeKLBQ+vHTzpDTXa6iunup1SLRRC
+ebQ1NQ14Vs+2lApXUMnhbmMKOqbX5cinuZbiUob7wQKBgACB4s5isZUlRMzUYKV0
+CAxMj9uFY5bEoyF9lE/SxxL8Cy7ZNJXKBhpdqY2YAXA65T1JNwR+kus7UzCbAby2
+aRtpJB1pJ3oUjBy7a1WBUaDbUuYfuoAnCtx0HqMLXJIEjFAFpPWuKuQL1AMVvRpt
+3BDQoUWUwolkoHMgQUWF75Rm
+-----END PRIVATE KEY-----
+
+
+-----BEGIN CERTIFICATE-----
+MIIDezCCAmOgAwIBAgIUWIbInomO0dP57WqyJNGV9vo/uGgwDQYJKoZIhvcNAQEL
+BQAwYzELMAkGA1UEBhMCUEwxETAPBgNVBAgMCE1hc292aWFuMQ8wDQYDVQQHDAZX
+YXJzYXcxDDAKBgNVBAoMA3V3dTEMMAoGA1UECwwDdXd1MRQwEgYDVQQDDAt3d3cu
+dXd1LmNvbTAeFw0yNDAzMDkyMzM2MjNaFw0yNjAzMDkyMzM2MjNaMGMxCzAJBgNV
+BAYTAlBMMREwDwYDVQQIDAhNYXNvdmlhbjEPMA0GA1UEBwwGV2Fyc2F3MQwwCgYD
+VQQKDAN1d3UxDDAKBgNVBAsMA3V3dTEUMBIGA1UEAwwLd3d3LnV3dS5jb20wggEi
+MA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQDk2o/ixpdmzm8GSEQ6qB0TOrDW
+BVhRiQm6QMJZ0tm+IcJRqQZRS9H43D83gDEDaEm6EeDw1RpTo9EQF/EQ/gFtEwUS
+Q5sEVX3jtwsZXgnyIMta3Na/SaY6ErZskZLNb5NG0gCJDO8YbHa5CioHUQqUJk8T
+BAdBU8xYu9AXqLdSIGb7ad0JGm8CskKKCH3a9ZVcHYKHeRdIQ8LGwb5oNuctchep
+2HEkU1E56dgC5jsgpJpZzShetwD1aQ6h/QhvWhn2lRTT9EB41zu+as7npTazmmT1
+zC6/uphmNtYKJK5lxbco0vFuZlyuK5Z6APQJE5o+BkLScZ2jO/ht8PbUiSf3AgMB
+AAGjJzAlMA4GA1UdDwEB/wQEAwIDiDATBgNVHSUEDDAKBggrBgEFBQcDATANBgkq
+hkiG9w0BAQsFAAOCAQEAutxNYEQCRyicuSyjH97ZTFVldC8mK6JTEvPeKMWHYHAn
+mVj00mSFN5ZYstvHE1RM5+2MMZvqu7XXXyq4NK1EodR9k+d1fGRcoRGbEGcuU3YQ
+zNdYlMisxOjMyvI1wqW7DLM7OCEyCQ6d04leevhw5h6zTmYkNNUNynZR5YbN4qaW
+cKdbMyTWCSWI2bnA3TZXp2gRJtfG+Qv/5paY9ouq+VhJtelRVyW7o72eWQmYTAU9
+ihVTNyb3eRsCtOkgQfaX0AO0cUhDN03abwrMEdApvLlrRjcs+NkStxbsKaSJ1ekC
+nzS0Sw+GplDfdtq8QWoPHVEvN+lzxa9we3eL6BdRcA==
+-----END CERTIFICATE-----
