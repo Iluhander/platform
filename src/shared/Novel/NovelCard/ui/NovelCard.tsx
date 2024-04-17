@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { INovel } from '@/shared/common/model';
 import { Reactions } from '@/shared/Reactions/lib/types';
+import animateSwap from '@/shared/common/lib/utils/animateSwap';
 
 import { ViewReaction } from '@/shared/Reactions';
 
@@ -13,7 +14,7 @@ export interface INovelCardAttrs {
 
 // Card component for marketplace novels.
 export default function NovelCard({ novel, reaction }: INovelCardAttrs) {
-  const imgURL = `${process.env.NEXT_PUBLIC_BACKEND}/static/cover/novel/${novel.id}?v=${novel.coverVersion}`;
+  const imgURL = `${process.env.NEXT_PUBLIC_ASSETS}/static/cover/novel/${novel.id}?v=${novel.coverVersion}`;
   const { id, genre, likesCount, commentsCount, author } = novel;
 
   let { title = ' ', description = ' ' } = novel;
@@ -36,11 +37,7 @@ export default function NovelCard({ novel, reaction }: INovelCardAttrs) {
       return;
     }
 
-    const card = e.currentTarget.children[0];
-    card.style.display = 'none';
-
-    const description = e.currentTarget.children[1];
-    description.style.display = 'block';
+    animateSwap(e.currentTarget.children[0], e.currentTarget.children[1], 'block', 700);
   }
 
   function mouseLeaveHandler(e: any) {
@@ -48,11 +45,12 @@ export default function NovelCard({ novel, reaction }: INovelCardAttrs) {
       return;
     }
 
-    const card = e.currentTarget.children[0];
-    card.style.display = 'unset';
+    animateSwap(e.currentTarget.children[1], e.currentTarget.children[0], 'unset', 700);
+    // const card = e.currentTarget.children[0];
+    // card.style.display = 'unset';
 
-    const description = e.currentTarget.children[1];
-    description.style.display = 'none';
+    // const description = e.currentTarget.children[1];
+    // description.style.display = 'none';
   }
 
   return (

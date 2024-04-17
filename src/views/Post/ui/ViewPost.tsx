@@ -21,7 +21,7 @@ const ViewPost: FC<IViewPostProps> = ({ data, content }) => {
       <ViewPostReaction data={data}>
         <PostModMenuLazy postId={data.id} hidden={data.hidden} />
       </ViewPostReaction>
-      <Comments />
+      <Comments count={data.commentsCount || Infinity} />
     </div>
   );
 };

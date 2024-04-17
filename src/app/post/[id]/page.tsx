@@ -33,7 +33,7 @@ export async function generateMetadata(props: IPostPageProps) {
       title,
       description,
       images: [{
-        url: `${process.env.NEXT_PUBLIC_BACKEND}/static/post/cover/${data.id}?v=${data.coverVersion}`
+        url: `${process.env.NEXT_PUBLIC_ASSETS}/static/post/cover/${data.id}?v=${data.coverVersion}`
       }],
     }
   };

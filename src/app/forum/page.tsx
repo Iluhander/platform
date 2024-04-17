@@ -1,5 +1,5 @@
 import ForumDataWrapper from "./[id]/page";
-import metadata from "./[id]/page";
+import { generateMetadata } from "./[id]/page";
 
-export { metadata };
+export { generateMetadata };
 export default ForumDataWrapper;

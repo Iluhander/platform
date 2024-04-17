@@ -13,7 +13,7 @@ const NovelMetaData: FC<{ data: INovel }> = ({ data }) => {
     <section className="novelDescriptionBlock novelDataView">
       <img
         className="novelCover"
-        src={`${process.env.NEXT_PUBLIC_BACKEND}/static/cover/novel/${data.id}?v=${data.coverVersion}`}
+        src={`${process.env.NEXT_PUBLIC_ASSETS}/static/cover/novel/${data.id}?v=${data.coverVersion}`}
         alt={data.title}
       />
       <p itemProp="about" className="novelDescriptionView">{data.description}</p>

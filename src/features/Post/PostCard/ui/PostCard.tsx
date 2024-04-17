@@ -3,9 +3,8 @@ import { IPost } from '@/shared/common/model/forum';
 import { ViewReaction } from '@/shared/Reactions';
 
 import { FC } from 'react';
-import { isMobile } from 'react-device-detect';
 
-import './PostCard.scss';
+import s from './PostCard.module.scss';
 
 interface IPostCardProps {
   data: IPost;
@@ -20,23 +19,23 @@ const PostCard: FC<IPostCardProps> = ({ data, reaction }) => {
   const commonContent = (
     <>
       <img
-        src={`${process.env.NEXT_PUBLIC_BACKEND}/static/post/cover/${data.id}?v=${data.coverVersion}`}
-        alt=""
-        className="postHeaderCover"
+        src={`${process.env.NEXT_PUBLIC_ASSETS}/static/post/cover/${data.id}?v=${data.coverVersion}`}
+        className={s.postCard__cover}
+        itemProp="image"
       />
-      <div className="postCardContent">
+      <div className={s.postCard__content}>
         <h2 itemProp="name">{data.title}</h2>
-        <div className="postCardMeta">
+        <div className={s.postCard__meta}>
           <p itemProp="category">{data.subForum?.name}</p>
           <p>•</p>
           <p>{data.author?.username}</p>
         </div>
-        <div className="postCardReaction">
+        <div className={s.postCard__reaction}>
           <div>
             <ViewReaction reaction={reaction} likesCount={data.likesCount} />
           </div>
           {data.commentsCount && data.commentsCount > 0 ? (
-            <div className="postCardReplies">
+            <div className={s.postCard__replies}>
               <img src="/icons/replywhite.png" alt="replies" />
               <p>{data.commentsCount}</p>
             </div>
@@ -51,7 +50,7 @@ const PostCard: FC<IPostCardProps> = ({ data, reaction }) => {
   return (
     <Link href={`/post/${data.id}`}>
       <article
-        className="postCard"
+        className={s.postCard}
         itemScope
         itemType="https://schema.org/Article"
       >

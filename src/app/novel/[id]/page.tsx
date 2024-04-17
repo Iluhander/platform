@@ -31,7 +31,7 @@ export async function generateMetadata(props: INovelPageProps) {
       title,
       description,
       images: [{
-        url: `${process.env.NEXT_PUBLIC_BACKEND}/static/cover/novel/${data.id}?v=${data.coverVersion}`
+        url: `${process.env.NEXT_PUBLIC_ASSETS}/static/cover/novel/${data.id}?v=${data.coverVersion}`
       }],
     },
     twitter: {

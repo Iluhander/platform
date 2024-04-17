@@ -101,7 +101,7 @@ const CommentForm: FC<ICommentFormProps> = ({ callReplyTo, callCommentsRefetch, 
     ((e.target as HTMLFormElement).elements[0] as HTMLInputElement).value = '';
   };
 
-  const userAvatarURL = `${process.env.NEXT_PUBLIC_BACKEND}/static/avatar/${userData.id}?v=${userData.avatarVersion}`;
+  const userAvatarURL = `${process.env.NEXT_PUBLIC_ASSETS}/static/avatar/${userData.id}?v=${userData.avatarVersion}`;
 
   return (
     <form

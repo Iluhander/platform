@@ -2,7 +2,7 @@ import { FC } from 'react';
 import Link from 'next/link';
 import { IPost } from '@/shared/common/model/forum';
 
-import './ViewPostHeader.scss';
+import s from './ViewPostHeader.module.scss';
 
 const ViewPostHeader: FC<{ data: IPost }> = ({ data }) => {
   if (!data) {
@@ -26,15 +26,15 @@ const ViewPostHeader: FC<{ data: IPost }> = ({ data }) => {
   );
 
   return (
-    <header className="viewPostHeader">
+    <header className={s.viewpostHeader}>
       <img
-        src={`${process.env.NEXT_PUBLIC_BACKEND}/static/post/cover/${data.id}?v=${data.coverVersion}`}
+        src={`${process.env.NEXT_PUBLIC_ASSETS}/static/post/cover/${data.id}?v=${data.coverVersion}`}
         alt=""
-        className="postHeaderCover"
+        className={s.viewpostHeader__cover}
       />
-      <div className="viewPostHeaderMeta">
+      <div className={s.viewpostHeader__meta}>
         <h2 itemProp="name">{data.title}</h2>
-        <div className="viewPostHeaderMetaRow">
+        <div className={s.viewpostHeader__metaRow}>
           {subForumLink}
           <p>•</p>
           {authorLink}

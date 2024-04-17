@@ -34,7 +34,7 @@ const Comment: FC<ICommentProps> = ({
     ? handleUserName(comment.replyToComment.author?.username)
     : '';
 
-  const avatarURL = `${process.env.NEXT_PUBLIC_BACKEND}/static/avatar/${comment.author?.id}?v=${comment.author?.avatarVersion}`;
+  const avatarURL = `${process.env.NEXT_PUBLIC_ASSETS}/static/avatar/${comment.author?.id}?v=${comment.author?.avatarVersion}`;
 
   return (
     <article

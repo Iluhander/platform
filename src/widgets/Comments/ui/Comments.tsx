@@ -1,7 +1,6 @@
 'use client'
 
 import { FC, useContext, useMemo, useRef, useState } from 'react';
-import { BrowserView, MobileOnlyView } from 'react-device-detect';
 
 // Utilities.
 import { CommentsContext } from '@/shared/common/lib/comment/CommentsContext';
@@ -9,6 +8,7 @@ import { UserDataContext, EUserDataStatus } from '@/shared/common/lib/user/userD
 import useShowModal from '@/shared/Modal/lib/useShowModal';
 import { EShowModalType } from '@/shared/Modal/lib';
 import { commentsPerPage } from '@/shared/common/model/constants';
+import Device from '@/shared/common/ui/Device';
 
 // Components.
 import { CommentsList } from '@/entities/Comments/CommentsList';
@@ -54,26 +54,37 @@ const Comments: FC<{ count?: number }> = ({ count = Infinity }) => {
     </>
   );
 
+  const commentCountElem = (
+    <h2>
+      Комментарии{maxCount && maxCount !== Infinity ? (
+          <>
+            {' '}&#40;<span itemProp="reviewCount">{maxCount}</span>&#41;
+          </>
+        ) :
+        ''
+      }:
+    </h2>
+  );
+
   return (
     <CommentsContext.Provider value={context}>
-      <BrowserView>
-        <section className="novelComments">
-          <div className="commentSized">
-            <h2>
-              Комментарии{maxCount && maxCount !== Infinity ? <span itemProp="reviewCount"> ${maxCount}</span> : ''}:
-            </h2>
-          </div>
-          {list}
-        </section>
-      </BrowserView>
-      <MobileOnlyView>
-        <section className="novelComments novelCommentsMobile">
-          <div className="commentSized">
-            <h2>Комментарии{maxCount && maxCount !== Infinity ? <span itemProp="reviewCount"> ${maxCount}</span> : ''}:</h2>
-          </div>
-          {list}
-        </section>
-      </MobileOnlyView>
+      <Device>  
+        {({ isMobile }) => isMobile ? (
+          <section className="novelComments novelCommentsMobile">
+            <div className="commentSized">
+              {commentCountElem}
+            </div>
+            {list}
+          </section>
+        ) : (
+          <section className="novelComments">
+            <div className="commentSized">
+              {commentCountElem}
+            </div>
+            {list}
+          </section>
+        )}
+      </Device>
     </CommentsContext.Provider>
   );
 };

@@ -34,7 +34,7 @@ const Novel: FC<{ novelData: INovel }> = ({ novelData }) => {
         </div>
         <NovelMetaData data={novelData} />
       </main>
-      <Comments count={novelData.commentsCount} />
+      <Comments count={novelData.commentsCount || Infinity} />
     </div>
   );
 };

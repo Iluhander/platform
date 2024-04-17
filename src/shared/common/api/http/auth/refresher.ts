@@ -1,3 +1,5 @@
+'use client'
+
 import axios, { AxiosResponse } from 'axios';
 
 import userSession from '@/shared/common/lib/user/userSession';
