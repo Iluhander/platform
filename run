@@ -1,0 +1,8 @@
+#!/bin/bash
+
+cd ../assets-local
+kill $(lsof -i :7654 | awk 'FNR == 2 {print $2}')
+node ./index.js > /dev/null &
+
+cd ../platform
+npm run dev

@@ -7,6 +7,8 @@ interface INovelPageProps {
   params: { id: string };
 }
 
+export const revalidate = 30;
+
 export async function generateMetadata(props: INovelPageProps) {
   let { data, status } = await $serverApi.get(`/novel/${props.params.id}`);
   if (!checkSuccessStatus(status)) {

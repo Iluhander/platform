@@ -9,6 +9,8 @@ interface IPostPageProps {
   params: { id: string };
 }
 
+export const revalidate = 100;
+
 export async function generateMetadata(props: IPostPageProps) {
   let { data, status } = await $serverApi.get(`/forum/post/view/${props.params.id}`);
   if (!checkSuccessStatus(status)) {

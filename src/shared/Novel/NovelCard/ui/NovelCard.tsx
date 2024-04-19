@@ -1,4 +1,3 @@
-import Link from 'next/link';
 import { INovel } from '@/shared/common/model';
 import { Reactions } from '@/shared/Reactions/lib/types';
 import animateSwap from '@/shared/common/lib/utils/animateSwap';
@@ -37,7 +36,7 @@ export default function NovelCard({ novel, reaction }: INovelCardAttrs) {
       return;
     }
 
-    animateSwap(e.currentTarget.children[0], e.currentTarget.children[1], 'block', 700);
+    animateSwap(e.currentTarget.children[0], e.currentTarget.children[1], 'block', 450);
   }
 
   function mouseLeaveHandler(e: any) {
@@ -45,7 +44,7 @@ export default function NovelCard({ novel, reaction }: INovelCardAttrs) {
       return;
     }
 
-    animateSwap(e.currentTarget.children[1], e.currentTarget.children[0], 'unset', 700);
+    animateSwap(e.currentTarget.children[1], e.currentTarget.children[0], 'unset', 450);
     // const card = e.currentTarget.children[0];
     // card.style.display = 'unset';
 
@@ -54,7 +53,8 @@ export default function NovelCard({ novel, reaction }: INovelCardAttrs) {
   }
 
   return (
-    <Link href={`/novel/${id}`} style={{ textDecoration: 'none' }}>
+    // For some reason, doesnt fetch comments with next/link.
+    <a href={`/novel/${id}`} style={{ textDecoration: 'none' }}>
       <article
         className="novelArticle"
         onMouseEnter={mouseEnterHandler}
@@ -105,6 +105,6 @@ export default function NovelCard({ novel, reaction }: INovelCardAttrs) {
           )}
         </div>
       </article>
-    </Link>
+    </a>
   );
 }

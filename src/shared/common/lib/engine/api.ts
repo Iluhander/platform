@@ -3,15 +3,20 @@
 import refresher from "../../api/http/auth/refresher";
 
 export function provideEngineAPI(
-  userId: string | null,
-  novelId: string | null,
+  userId: string | undefined,
+  novelId: string | undefined,
   sendMessage?: (arg0: any, arg1: any, arg2: any) => void
 ) {
   if (!window.refresh) {
     window.refresh = () => refresher.refresh();
   }
 
-  if (novelId && !window.getWebProjectData) {
+  if (userId !== undefined) {
+    window.getUserId = () => userId;
+  }
+
+  if (novelId !== undefined) {
+    window.getNovelId = () => novelId;
     window.getWebProjectData = () => {
       window.engineLoaded = true;
       return {
@@ -19,14 +24,6 @@ export function provideEngineAPI(
         S3Prefix: novelId
       };
     };
-  }
-
-  if (userId && !window.getUserId) {
-    window.getUserId = () => userId;
-  }
-
-  if (novelId && !window.getNovelId) {
-    window.getNovelId = () => novelId;
   }
 
   if (sendMessage) {

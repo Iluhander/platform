@@ -1,3 +1,6 @@
+import NodeCache from "node-cache";
+import { hasher } from "node-object-hash";
+
 const req = (p: Promise<Response>): Promise<IRes> => p
   .then(async (p) => ({ data: await p.json(), status: p.status }));
 
@@ -6,12 +9,19 @@ interface IRes {
   status: number;
 }
 
-const defaultNextReqConfig: NextFetchRequestConfig = { revalidate: 300 };
+/**
+ * Replacement for default broken cache.
+ */
+// const hashSortCoerce = hasher({ sort: true, coerce: true }); 
+
+// const cache = new NodeCache();
+
+const defaultNextReqConfig: NextFetchRequestConfig = { revalidate: 100 };
 
 class ServerAPI {
   constructor(private basePath: string) {}
 
-  get(uri: string, next = defaultNextReqConfig) {
+  get(uri: string, next = defaultNextReqConfig): Promise<IRes> {
     if (!next.revalidate) {
       return req(fetch(`${this.basePath}${uri}` , {
         method: 'GET',
@@ -25,7 +35,7 @@ class ServerAPI {
     }));
   }
 
-  post(uri: string, data: Record<string, any>, next = defaultNextReqConfig) {
+  post(uri: string, data: Record<string, any>, next = defaultNextReqConfig): Promise<IRes> {
     if (!next.revalidate) {
       return req(fetch(`${this.basePath}${uri}` , {
         method: 'POST',
@@ -33,7 +43,7 @@ class ServerAPI {
         cache: 'no-store'
       }));
     }
-   
+
     return req(fetch(`${this.basePath}${uri}` , {
       method: 'POST',
       body: JSON.stringify(data),

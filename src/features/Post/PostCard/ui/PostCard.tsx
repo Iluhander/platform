@@ -1,10 +1,10 @@
-import Link from 'next/link';
 import { IPost } from '@/shared/common/model/forum';
 import { ViewReaction } from '@/shared/Reactions';
 
 import { FC } from 'react';
 
 import s from './PostCard.module.scss';
+import { D, P } from '@/shared/common/lib/dev/log';
 
 interface IPostCardProps {
   data: IPost;
@@ -48,7 +48,8 @@ const PostCard: FC<IPostCardProps> = ({ data, reaction }) => {
   );
 
   return (
-    <Link href={`/post/${data.id}`}>
+    // For some reason, doesnt fetch comments with next/link.
+    <a href={`/post/${data.id}`}>
       <article
         className={s.postCard}
         itemScope
@@ -56,7 +57,7 @@ const PostCard: FC<IPostCardProps> = ({ data, reaction }) => {
       >
         {commonContent}
       </article>
-    </Link>
+    </a>
   );
 };
 

@@ -8,6 +8,8 @@ type IForumDataWrapperProps = {
   params: IForumSearch;
 };
 
+export const revalidate = 90;
+
 export async function generateMetadata(props: IForumDataWrapperProps) {
   let forumData: any;
   if (props.params.id) {

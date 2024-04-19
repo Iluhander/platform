@@ -8,6 +8,8 @@ type IMarketPlaceDataWrapperProps = {
   searchParams: INovelSearch;
 }
 
+export const revalidate = 60;
+
 export const metadata: Metadata = {
   title: "Визуальные новеллы | UwU Novels",
   applicationName: 'UwU Novels',
