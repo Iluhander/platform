@@ -5,6 +5,7 @@ import refresher from "../../api/http/auth/refresher";
 export function provideEngineAPI(
   userId: string | undefined,
   novelId: string | undefined,
+  ownerId: string | undefined,
   sendMessage?: (arg0: any, arg1: any, arg2: any) => void
 ) {
   if (!window.refresh) {
@@ -13,6 +14,10 @@ export function provideEngineAPI(
 
   if (userId !== undefined) {
     window.getUserId = () => userId;
+  }
+
+  if (ownerId !== undefined) {
+    window.getOwnerId = () => ownerId;
   }
 
   if (novelId !== undefined) {

@@ -16,7 +16,7 @@ interface IRes {
 
 // const cache = new NodeCache();
 
-const defaultNextReqConfig: NextFetchRequestConfig = { revalidate: 100 };
+const defaultNextReqConfig: NextFetchRequestConfig = { };
 
 class ServerAPI {
   constructor(private basePath: string) {}

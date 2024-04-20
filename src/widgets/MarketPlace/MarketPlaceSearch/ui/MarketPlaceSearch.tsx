@@ -10,6 +10,7 @@ import { isMobile } from 'react-device-detect';
 import MarketPlaceAuthorFilter from '@/features/Market/MarketPlaceAuthorFilter';
 
 import './MarketPlaceSearch.scss';
+import { D } from '@/shared/common/lib/dev/log';
 
 interface IMarketPlaceSearch {
   defaultSearch: INovelSearch;

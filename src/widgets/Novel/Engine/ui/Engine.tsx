@@ -50,7 +50,7 @@ const Engine: FC<IEngineProps> = ({ fullScreenElems, playMode }) => {
   const { unityProvider, sendMessage, isLoaded } = useUnityContext(
     getUnityBuild(playMode, basePath)
   );
-  provideEngineAPI(undefined, undefined, sendMessage);
+  provideEngineAPI(undefined, undefined, undefined, sendMessage);
 
   const engineBlock = useRef<HTMLDivElement>(null);
 

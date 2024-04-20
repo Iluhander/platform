@@ -1,5 +1,5 @@
 import { GetArrStatus, ReqStatus, useReq } from '@iluhander/uwu-react';
-import { $api, defaultConfig } from '@/shared/common/api/http';
+import { $api } from '@/shared/common/api/http';
 import { IPage, IPost } from '@/shared/common/model';
 
 const useGetPostsPage = (subForum: string | null, initialData: IPage<IPost>) =>
@@ -11,7 +11,6 @@ const useGetPostsPage = (subForum: string | null, initialData: IPage<IPost>) =>
       }
 
       return $api.post(`/forum/post/posts-page`, reqBody, {
-        ...defaultConfig,
         params: { pageIndex }
       });
     },
@@ -28,7 +27,9 @@ const useGetPostsPage = (subForum: string | null, initialData: IPage<IPost>) =>
         }
 
         return GetArrStatus.LOADED;
-      }
+      },
+      timeout: 5000,
+      attempts: 2
     }
   );
 

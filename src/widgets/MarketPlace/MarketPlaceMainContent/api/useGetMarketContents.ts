@@ -1,17 +1,17 @@
 import { useReq, GetArrStatus, ReqStatus } from '@iluhander/uwu-react';
-import { $api, defaultConfig } from '@/shared/common/api/http';
+import { $api } from '@/shared/common/api/http';
 import { INovel, INovelSearch, IPage } from '@/shared/common/model';
+import { MutableRefObject } from 'react';
 
 /**
  * Hook for getting pages of novels.
  */
-const useGetMarketContents = (search: INovelSearch, initialData: IPage<INovel>) =>
+const useGetMarketContents = (searchRef: MutableRefObject<INovelSearch>, initialData: IPage<INovel>) =>
   useReq<number, IPage<INovel>>(
     (pageIndex) =>
-      $api.post('/novel/page', {}, {
-        ...defaultConfig,
-        params: { ...search, pageIndex }
-      }),
+    $api.post('/novel/page', {}, {
+      params: { ...searchRef.current, pageIndex }
+    }),
     {
       initialData,
       initialStatus: initialData.data.length > 0 ? ReqStatus.INITIALIZED : ReqStatus.LOADING,
@@ -26,7 +26,9 @@ const useGetMarketContents = (search: INovelSearch, initialData: IPage<INovel>) 
 
         return GetArrStatus.LOADED;
       },
-      getFailedStatus: () => GetArrStatus.ERROR
+      getFailedStatus: () => GetArrStatus.ERROR,
+      timeout: 5000,
+      attempts: 2
     }
   );
 

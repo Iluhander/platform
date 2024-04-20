@@ -62,7 +62,7 @@ function getFooterContents() {
       header: 'Мы здесь',
       rows: [
         {
-          link: 'https://discord.gg/KMyXggpk',
+          link: 'https://discord.gg/4UB2j86JNw',
           elements: [
             { img: `/icons/discord.png` },
             { text: '•' },

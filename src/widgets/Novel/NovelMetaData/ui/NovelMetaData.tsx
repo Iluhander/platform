@@ -57,7 +57,7 @@ const NovelMetaData: FC<{ data: INovel }> = ({ data }) => {
       </div>
       <NovelModMenuLazy novelId={data.id} hidden={data.hidden} />
       <NovelAuthorElem novelData={data} />
-      <NovelEngineProvider novelId={data.id} />
+      <NovelEngineProvider novelData={data} />
     </section>
   );
 }

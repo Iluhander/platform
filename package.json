@@ -9,7 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@iluhander/uwu-react": "^2.1.0",
+    "@iluhander/uwu-react": "^2.2.0",
     "axios": "^1.6.8",
     "mongoose": "^8.2.3",
     "next": "14.1.4",

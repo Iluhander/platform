@@ -17,7 +17,9 @@ interface IMarketPlaceMainContentProps {
 }
 
 const MarketPlaceMainContent: FC<IMarketPlaceMainContentProps> = ({ search, initialData }) => {
-  const { data: reqData, status, exec, setData } = useGetMarketContents(search, initialData);
+  const initialized = useRef(false);
+  const searchRef = useRef<INovelSearch>(search);
+  const { data: reqData, status, exec, setData } = useGetMarketContents(searchRef, initialData);
   const { data, maxCount } = reqData as IPage<INovel>;
   const { reactions } = useGetTargetsReactions(
     data.slice(-1 * novelsPerPage).map(({ id }) => id),
@@ -31,19 +33,17 @@ const MarketPlaceMainContent: FC<IMarketPlaceMainContentProps> = ({ search, init
     exec(newPageIdx);
   };
 
-  const prevSubForumId = useRef<any[]>([]);
-
   useEffect(() => {
     window.scrollTo(0, 0);
-    const searchValues = Object.values(search);
-
-    if (!prevSubForumId.current.length) {
-      prevSubForumId.current = searchValues;
+    
+    if (!initialized.current) {
+      initialized.current = true;
       return;
     }
-
-    if (prevSubForumId.current.find((val, i) => searchValues[i] !== val) !== undefined) {
-      prevSubForumId.current = searchValues;
+    
+    const searchValues = Object.values(search);
+    if (Object.values(searchRef.current).find((val, i) => searchValues[i] !== val) !== undefined) {
+      searchRef.current = search;
       setData({ index: 0, data: [], maxCount: Infinity });
       loadMore(0);
     }
