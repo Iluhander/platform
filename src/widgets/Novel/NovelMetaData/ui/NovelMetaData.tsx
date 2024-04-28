@@ -25,7 +25,7 @@ const NovelMetaData: FC<{ data: INovel }> = ({ data }) => {
           target="_blank"
           rel="noreferrer"
         >
-          {data.author?.username}
+          {data.author?.username || 'Аноним'}
         </a>
         , <span itemProp="datePublished">{data.publicationDate}</span>
       </p>

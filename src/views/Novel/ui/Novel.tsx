@@ -13,15 +13,6 @@ import NovelMetaData from '@/widgets/Novel/NovelMetaData/ui/NovelMetaData';
 import './Novel.scss';
 
 const Novel: FC<{ novelData: INovel }> = ({ novelData }) => {
-  const fullScreenElems = [
-    'nav',
-    'footer',
-    '.novelDescriptionBlock',
-    '.novelTitle',
-    '.novelComments',
-    '.novelTopMargin'
-  ];
-
   return (
     <div itemScope itemType="https://schema.org/Game">
       <div className="novelTopMargin" />
@@ -30,7 +21,7 @@ const Novel: FC<{ novelData: INovel }> = ({ novelData }) => {
           <h1 className="novelTitle" itemProp="name">
             {novelData?.title || 'Безымянная новелла'}
           </h1>
-          <Engine fullScreenElems={fullScreenElems} playMode />
+          <Engine playMode />
         </div>
         <NovelMetaData data={novelData} />
       </main>

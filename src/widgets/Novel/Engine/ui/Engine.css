@@ -8,22 +8,27 @@
   width: var(--resize-width);
   height: var(--resize-width);
 
-  background: #db0075a5;
+  background: white;
+  opacity: 0.7;
   border-radius: 8px;
   
   position: absolute;
   background-size: cover;
   filter: brightness(75%);
+  transition: 0.4s opacity, 0.4s transform;
 }
 
 .engineResize:hover {
-  filter: brightness(120%);
+  opacity: 1;
   cursor: pointer;
+  transform: scale(1.1);
 }
 
 .engineZoomIn {
   background-image: url("../../../../../public/icons/fullscreen.png");
   display: block;
+  height: 28px;
+  width: 28px;
 
   top: 20px;
   margin-left: calc(94% - var(--resize-width) / 2);
@@ -31,7 +36,7 @@
 
 .engineZoomOut {
   background-image: url("../../../../../public/icons/panescreen.png");
-  display: none;
+  display: block;
 
   top: 44px;
   left: 94vw;
@@ -41,12 +46,4 @@
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-.zoomedIn .engineZoomIn {
-  display: none;
-}
-
-.zoomedIn .engineZoomOut {
-  display: block;
 }
