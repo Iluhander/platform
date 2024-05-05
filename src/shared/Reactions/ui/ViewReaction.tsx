@@ -1,4 +1,3 @@
-import { D, P } from '@/shared/common/lib/dev/log';
 import { Reactions } from '../lib/types';
 import './Reaction.scss';
 

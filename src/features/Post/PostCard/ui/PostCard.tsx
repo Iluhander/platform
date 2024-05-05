@@ -4,7 +4,6 @@ import { ViewReaction } from '@/shared/Reactions';
 import { FC } from 'react';
 
 import s from './PostCard.module.scss';
-import { D, P } from '@/shared/common/lib/dev/log';
 
 interface IPostCardProps {
   data: IPost;

@@ -10,7 +10,7 @@ import getUnityBuild from '../api/getUnityBuild';
 
 import { LoadingCircle } from '@/shared/Animated';
 import { getEngineBasePath } from '@/shared/common/lib/engine/engineContext';
-import { provideEngineAPI } from '../../../../shared/common/lib/engine/api';
+import EngineAPI from '@/shared/common/lib/engine/api';
 
 import './Engine.css';
 
@@ -21,10 +21,11 @@ const loadingCircleStyle: CSSProperties = {
 };
 
 interface IEngineProps {
+  fullScreenElems: string[];
   playMode: boolean;
 }
 
-const Engine: FC<IEngineProps> = ({ playMode }) => {
+const Engine: FC<IEngineProps> = ({ playMode, fullScreenElems }) => {
   const screenHandle = useFullScreenHandle();
   const basePath = getEngineBasePath();
 
@@ -41,7 +42,8 @@ const Engine: FC<IEngineProps> = ({ playMode }) => {
   const { unityProvider, sendMessage, isLoaded } = useUnityContext(
     getUnityBuild(playMode, basePath)
   );
-  provideEngineAPI(undefined, undefined, undefined, sendMessage);
+  EngineAPI.instantiate();
+  EngineAPI.add({ sendMessage });
 
   const engineBlock = useRef<HTMLDivElement>(null);
 
