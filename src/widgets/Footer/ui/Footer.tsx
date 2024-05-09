@@ -87,7 +87,7 @@ export default function Footer() {
           <div className="row">
             <p>©2021-2024 UwU Novels</p>
             <p>•</p>
-            <a href="/aboutus">А кто мы ?</a>
+            <a href="/team">А кто мы ?</a>
           </div>
           <div className="row">
             <p>•</p>

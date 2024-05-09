@@ -14,6 +14,10 @@ const ActivateGlobalModal: FC<IActivateGlobalModalProps> = ({ action, text, stat
       text: 'Хорошо',
       action,
       className: 'niceButton'
+    },
+    {
+      text: 'Отправить ещё раз',
+      action: () => window.location.replace('/resend'),
     }
   ]: [], []);
 

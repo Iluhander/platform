@@ -26,7 +26,7 @@ function getModal(
         variant: EModalVariant.ACTIVATE_GLOBAL,
         status: EModalStatus.VISIBLE,
         propsData: {
-          removeWarning: () => {
+          action: () => {
             setShowModal(EShowModalType.NOTHING);
             removeModal();
           }

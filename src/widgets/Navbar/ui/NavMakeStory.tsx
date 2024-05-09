@@ -24,7 +24,7 @@ export default function NavMakeStory() {
     setAvailability(MakeStoryAvaliability.LOADING);
 
     createNovel().then((res) => {
-      window.location.replace(`editnovel?id=${res.id}`);
+      window.location.replace(`/editnovel?id=${res.id}`);
     });
   }
 
@@ -47,7 +47,7 @@ export default function NavMakeStory() {
       return <LoadingDots />;
     case MakeStoryAvaliability.AVAILABLE:
       return (
-        <a onClick={createStory} href="editnovel">
+        <a onClick={createStory} href="/editnovel">
           Создать историю
         </a>
       );

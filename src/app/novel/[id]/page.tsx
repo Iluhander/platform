@@ -25,6 +25,9 @@ export async function generateMetadata(props: INovelPageProps) {
     authors: [{ name: data.author?.username }],
     creator: data.author?.username,
     publisher: 'UwU Novels',
+    icons: {
+      icon: '/favicon.png'
+    },
     openGraph: {
       type: 'website',
       url: `https://uwunovels.com/novel/${props.params.id}`,

@@ -51,7 +51,7 @@ function getFooterContents() {
           ]
         },
         {
-          link: '/docs',
+          link: '/post/663a3a064f695a98403b6e1b',
           elements: [
             { text: 'Гайд по движку' }
           ]
@@ -62,7 +62,7 @@ function getFooterContents() {
       header: 'Мы здесь',
       rows: [
         {
-          link: 'https://discord.gg/4UB2j86JNw',
+          link: 'https://discord.gg/Dq8tUCNann',
           elements: [
             { img: `/icons/discord.png` },
             { text: '•' },

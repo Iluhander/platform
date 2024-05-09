@@ -12,7 +12,7 @@ const mirza = Mirza({ subsets: ['latin'], weight: '600' });
 export default function Main() {
   const sections = [
     {
-      leadElement: <iframe src="https://www.youtube.com/embed/jyKWwNAaDg8" title="Видео движка" />,
+      leadElement: <iframe src="https://www.youtube.com/embed/gXzouJWB5OY" title="Видео движка" />,
       header: 'Создавай !',
       mainP: (
         <p style={{ color: '#FF99BE' }}>

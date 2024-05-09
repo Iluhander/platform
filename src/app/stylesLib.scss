@@ -16,6 +16,11 @@
   filter: brightness(130%);
 }
 
+.niceButton2 {
+  background: var(--background-contrast);
+  color: var(--main-color);
+}
+
 .noBackgroundInput {
   background-color: rgba(0, 0, 0, 0);
   border: none;
@@ -79,4 +84,10 @@
 .secondaryLink {
   color: var(--third-color);
   font-size: 14px;
+}
+
+.code {
+  border-radius: 6px;
+  background: var(--background-contrast);
+  font-family:'Courier New', Courier, monospace;
 }

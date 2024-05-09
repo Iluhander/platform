@@ -8,7 +8,7 @@ const useGetAuthData = () =>
     notInstantReq: true,
     initialData: LoadingUserData,
     reducer: (_, newData) => extractUserData(newData),
-    timeout: 5000,
+    timeout: 7000,
     attempts: 3
   });
 

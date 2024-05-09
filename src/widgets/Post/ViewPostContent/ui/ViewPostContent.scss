@@ -1,9 +1,14 @@
 .viewPostContent {
   background-color: var(--background-contrast3);
-  width: calc(600px - 40px);
+  width: calc(740px - 40px);
   border: 1px solid rgba(255, 255, 255, 0.100);
   border-radius: 6px;
   padding: 20px;
+
+  * {
+    font-size: 20px;
+    max-width: 100% !important;
+  }
 }
 
 @media (max-width: 900px) {
