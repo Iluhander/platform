@@ -9,20 +9,58 @@
   text-align: center;
 }
 
-.errorFallback button {
-  height: 40px;
-  width: 40px;
-  background: none;
-  padding: 0;
-  font-size: 70px;
-  color: var(--brand-yellow);
-  transition: filter 4s;
-}
-
-.errorFallback button:hover {
-  filter: hue-rotate(720deg);
-}
-
 .errorFallbackBug {
   position: fixed;
+}
+
+.errorFallbackVariants li {
+  margin-bottom: 14px;
+  text-align: start;
+
+  cursor: pointer;
+  transition: 0.3s ease;
+
+  list-style: none;
+}
+
+.errorFallback li a {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.errorFallbackVariants li::before {
+  font-size: 18px;
+}
+
+.errorFallbackFirstOption a {
+  color: lightblue;
+}
+
+.errorFallbackFirstOption::before {
+  content: '⚔ ';
+}
+
+.errorFallbackSecondOption a {
+  color: var(--brand-yellow);
+}
+
+.errorFallbackSecondOption::before {
+  content: '🏃';
+}
+
+.errorFallbackThirdOption a {
+  color: red;
+}
+
+.errorFallbackThirdOption img {
+  width: 18px;
+  height: 18px;
+}
+
+.errorFallbackVariants li:hover a {
+  color: white;
+}
+
+.errorFallbackVariantsHint {
+  color: var(--third-color);
 }

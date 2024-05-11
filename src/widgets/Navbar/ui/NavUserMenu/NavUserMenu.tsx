@@ -39,17 +39,19 @@ export default function NavUserMenu() {
     />
   );
   if (userData.status === EUserDataStatus.AUTHENTICATED) {
-    navIcon = (
-      <img
-        alt=""
-        className="navUserAvatar"
-        src={`${process.env.NEXT_PUBLIC_ASSETS}/static/avatar/${userData.id}?v=${userData.avatarVersion}`}
-        onError={(e: any) => {
-          e.target.src = `${process.env.NEXT_PUBLIC_ORIGIN}/icons/user.png`;
-          e.target.className = 'navUserMenuIcon';
-        }}
-      />
-    );
+    if (userData.avatarVersion) {
+      navIcon = (
+        <img
+          alt=""
+          className="navUserAvatar"
+          src={`${process.env.NEXT_PUBLIC_ASSETS}/static/myavatar/${userData.id}?v=${userData.avatarVersion}`}
+          onError={(e: any) => {
+            e.target.src = `${process.env.NEXT_PUBLIC_ORIGIN}/icons/user.png`;
+            e.target.className = 'navUserMenuIcon';
+          }}
+        />
+      );
+    }
 
     authElem = (
       <a href="" onClick={logOut}>

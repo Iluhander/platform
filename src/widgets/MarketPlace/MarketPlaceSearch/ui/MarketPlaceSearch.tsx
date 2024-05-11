@@ -10,7 +10,6 @@ import { isMobile } from 'react-device-detect';
 import MarketPlaceAuthorFilter from '@/features/Market/MarketPlaceAuthorFilter';
 
 import './MarketPlaceSearch.scss';
-import { D } from '@/shared/common/lib/dev/log';
 
 interface IMarketPlaceSearch {
   defaultSearch: INovelSearch;
@@ -163,6 +162,9 @@ const MarketPlaceSearch: FC<IMarketPlaceSearch> = ({ defaultSearch, search, setS
           <div />
         )}
       </form>
+      {/* <div className="marketFAQ">
+        <a href="/team">FAQ</a>
+      </div> */}
     </aside>
   );
 }

@@ -1,19 +1,15 @@
-'use client'
-
-import { FC } from 'react';
+'use client';
 
 import './globals.scss';
 import './ErrorFallback.css';
 
-interface IErrorFallbackProps {}
-
-const ErrorFallback: FC<IErrorFallbackProps> = (props) => {
+export default function ErrorFallback() {
   return (
     <div className="errorFallback">
-      <h2>Злостные баги что-то сломали ! Перезагрузите страницу</h2>
+      <h2>Злостные баги выпрыгнули из засады и сломали страницу !</h2>
       <img
         className="errorFallbackBug"
-        src="icons/bug.png"
+        src="/icons/bug.png"
         alt=""
         style={{
           width: 100,
@@ -25,7 +21,7 @@ const ErrorFallback: FC<IErrorFallbackProps> = (props) => {
       />
       <img
         className="errorFallbackBug"
-        src="icons/bug.png"
+        src="/icons/bug.png"
         alt=""
         style={{
           width: 120,
@@ -37,7 +33,7 @@ const ErrorFallback: FC<IErrorFallbackProps> = (props) => {
       />
       <img
         className="errorFallbackBug"
-        src="icons/bug.png"
+        src="/icons/bug.png"
         alt=""
         style={{
           width: 100,
@@ -49,7 +45,7 @@ const ErrorFallback: FC<IErrorFallbackProps> = (props) => {
       />
       <img
         className="errorFallbackBug"
-        src="icons/bug.png"
+        src="/icons/bug.png"
         alt=""
         style={{
           width: 100,
@@ -59,10 +55,28 @@ const ErrorFallback: FC<IErrorFallbackProps> = (props) => {
           transform: 'rotate(170deg)'
         }}
       />
-
-      <button onClick={() => window.location.reload()}>⟳</button>
+      <div className="errorFallbackVariants">
+        <ul>
+          <li className="errorFallbackFirstOption">
+            <a href="">
+              Сразиться с ними{' '}
+              <span className="errorFallbackVariantsHint">(перезагрузка страницы ⟳)</span>
+            </a>
+          </li>
+          <li className="errorFallbackSecondOption">
+            <a href="/">
+              Бежать <span className="errorFallbackVariantsHint">(на главную)</span>
+            </a>
+          </li>
+          <li className="errorFallbackThirdOption">
+            <a href="/team">
+              <img src="/images/redlightsaber.png" alt="" />
+              Перейти на их сторону{' '}
+              <span className="errorFallbackVariantsHint">(стать разработчиком "UwU Novels")</span>
+            </a>
+          </li>
+        </ul>
+      </div>
     </div>
   );
-};
-
-export default ErrorFallback;
+}

@@ -156,6 +156,7 @@
 .hiddenFilters {
   .marketFilters {
     width: 0;
+    max-height: 0;
   }
 
   .marketFilters * {
@@ -221,6 +222,12 @@
   p {
     margin-left: 10px;
     opacity: 0;
+  }
+}
+
+.marketFAQ {
+  a {
+    color: var(--main-color);
   }
 }
 
