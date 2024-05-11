@@ -9,7 +9,6 @@ import { CommentContext } from '@/shared/common/lib/comment/СommentContext';
 import CommentModMenu from '@/features/Comments/CommentModMenu/ui/CommentModMenu';
 
 // Components.
-import CommentsReplies from '../../CommentsReplies/CommentReplies';
 import Comment from '@/shared/Comments/Comment/Comment';
 import { CommentForm } from '@/features/Comments/CommentForm';
 
@@ -18,10 +17,11 @@ import './CommentBlock.scss';
 interface ICommentBlockProps {
   comment: IComment;
   index: number;
-  increaseCommentsCount: (comment: string) => void; 
+  increaseCommentsCount: (comment: string) => void;
+  CommentReplies: FC<any>;
 }
 
-const CommentBlock: FC<ICommentBlockProps> = ({ comment, index, increaseCommentsCount }) => {
+const CommentBlock: FC<ICommentBlockProps> = ({ comment, index, increaseCommentsCount, CommentReplies }) => {
   const { userData } = useContext(UserDataContext);
   const { callReplyTo, currentlyReplyingTo } = useContext(CommentsContext);
   const [repliesHidden, setRepliesHidden] = useState(true);
@@ -53,7 +53,7 @@ const CommentBlock: FC<ICommentBlockProps> = ({ comment, index, increaseComments
   } else {
     repliesElement = (
       <>
-        <CommentsReplies setMaxCount={setMaxCount} />
+        <CommentReplies setMaxCount={setMaxCount} />
         <div className="commentRepliesControl">
           <button
             type="button"

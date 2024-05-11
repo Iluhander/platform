@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { Mirza } from 'next/font/google';
 
 // Components.
-import LeadSection from '@/widgets/MainPage/LeadSection/LeadSection';
+import { LeadSection } from '@/widgets/MainPage/LeadSection';
 import AppWrapper from '@/appWrapper';
 
 import './Main.scss';

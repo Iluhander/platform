@@ -1,4 +1,4 @@
-import userSession from '@/shared/common/lib/user/userSession';
+import { userSession } from '@/shared/common/lib/user';
 import refresher from './refresher';
 
 export default async function apiErrAuthHandler(error: Record<string, any>) {

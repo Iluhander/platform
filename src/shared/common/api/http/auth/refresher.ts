@@ -2,7 +2,7 @@
 
 import axios, { AxiosResponse } from 'axios';
 
-import userSession from '@/shared/common/lib/user/userSession';
+import { userSession } from '@/shared/common/lib/user';
 
 class Refresher {
   __lastCallTime?: number;

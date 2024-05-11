@@ -1,4 +1,4 @@
-import ForumNavContent from './ForumNavContent';
+import ForumNavContent from '@/features/Forum/ForumNav/ui/ForumNavContent';
 
 import './ForumNav.scss';
 

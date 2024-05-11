@@ -5,10 +5,11 @@ import { FC, useEffect, useMemo, useRef } from 'react';
 import { useParams } from 'next/navigation';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import { GetArrStatus } from '@iluhander/uwu-react';
+
 import { IPage } from '@/shared/common/model';
 import { IPost } from '@/shared/common/model/forum';
 import useGetPostsPage from '../api/useGetPostsPage';
-import useGetTargetsReactions from '@/widgets/MarketPlace/MarketPlaceMainContent/api/useGetTargetsReactions';
+import useGetTargetsReactions from '@/shared/common/api/useGetTargetsReactions';
 import getPostsReactions from '../api/getPostsReactions';
 import { postsPageDefaultSize } from '@/shared/common/model/constants';
 

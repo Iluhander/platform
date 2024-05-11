@@ -5,7 +5,8 @@ import { isMobile } from 'react-device-detect';
 import { Feed } from '@/widgets/Forum/Feed';
 import AppWrapper from '@/appWrapper';
 import { IPage, IPost } from '@/shared/common/model';
-import { ForumNav, ForumNavMobile } from '@/widgets/Forum/ForumNav';
+import { ForumNav } from '@/entities/Forum/ForumNav/ForumNav';
+import { ForumNavMobile } from '@/entities/Forum/ForumNav/ForumNavMobile';
 
 import './Forum.css';
 

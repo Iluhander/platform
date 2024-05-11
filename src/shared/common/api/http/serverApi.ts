@@ -1,6 +1,3 @@
-import NodeCache from "node-cache";
-import { hasher } from "node-object-hash";
-
 const req = (p: Promise<Response>): Promise<IRes> => p
   .then(async (p) => ({ data: await p.json(), status: p.status }));
 

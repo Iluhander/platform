@@ -1,6 +1,6 @@
-import $serverApi from "@/shared/common/api/http/serverApi";
+import { $serverApi } from "@/shared/common/api/http";
 import { INovel, INovelSearch, IPage } from "@/shared/common/model";
-import MarketPlace from "@/views/Market/page";
+import { MarketPlace } from "@/views/Market";
 import { checkSuccessStatus } from "@iluhander/uwu-react";
 import { Metadata } from "next";
 

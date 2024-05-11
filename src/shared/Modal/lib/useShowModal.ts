@@ -1,4 +1,4 @@
-import { useState, useContext, useEffect, Dispatch, SetStateAction, useRef } from 'react';
+import { useContext } from 'react';
 
 import { ModalContext, EModalVariant, EModalStatus, IModalData, EShowModalType } from './index';
 

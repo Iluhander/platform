@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { ReqStatus } from '@iluhander/uwu-react';
 import { Reactions } from '@/shared/Reactions/lib/types';
-import userSession from '@/shared/common/lib/user/userSession';
+import { userSession } from '@/shared/common/lib/user';
 
 let timeout: NodeJS.Timeout | undefined = undefined;
 const useGetTargetsReactions = (

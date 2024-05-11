@@ -1,14 +1,19 @@
-import getSearchStr from "@/shared/common/lib/utils/getSearchStr";
-import { LoadingCircle, SpanList } from "@/shared/Animated";
-import { INovelSearch } from "@/shared/common/model";
-import { GetArrStatus, ReqStatus } from "@iluhander/uwu-react";
+// Extrernal.
+import { GetArrStatus } from "@iluhander/uwu-react";
 import { FC, useEffect, useMemo, useRef } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
+
+// Utilities.
+import getSearchStr from "@/shared/common/lib/utils/getSearchStr";
+import { INovelSearch } from "@/shared/common/model";
 import useGetMarketContents from "../api/useGetMarketContents";
-import useGetTargetsReactions from "../api/useGetTargetsReactions";
+import useGetTargetsReactions from "../../../../shared/common/api/useGetTargetsReactions";
 import { INovel, IPage } from "@/shared/common/model";
 import { novelsPerPage } from "@/shared/common/model/constants";
 import getNovelsReactions from "../api/getNovelsReactions";
+
+// Components.
+import { LoadingCircle, SpanList } from "@/shared/Animated";
 import NovelCardsList from "@/shared/Novel/NovelCard/ui/NovelCardsList";
 
 interface IMarketPlaceMainContentProps {

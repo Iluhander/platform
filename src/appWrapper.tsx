@@ -7,12 +7,12 @@ import { ReqStatus } from '@iluhander/uwu-react';
 import { UserDataContext, NotAuthenticatedUserData } from './shared/common/lib/user/userData';
 import useGetAuthData from './shared/common/api/user/useGetAuthData';
 import { DefaultModalData, EModalStatus, IModalData, ModalContext } from './shared/Modal/lib';
-import userSession from './shared/common/lib/user/userSession';
+import { userSession } from './shared/common/lib/user';
 
 // Components.
 import AuxiliaryProvider from './shared/common/lib/auxiliary/AuxiliaryProvider';
 import { Navbar } from './widgets/Navbar';
-import Footer from './widgets/Footer/ui/Footer';
+import { Footer } from './widgets/Footer';
 import ModalWrapper from './shared/Modal/ui/ModalWrapper';
 
 interface IAppWrapperProps {

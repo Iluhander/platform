@@ -1,4 +1,4 @@
-import Main from "@/views/Main/page"
+import { Main } from "@/views/Main";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {

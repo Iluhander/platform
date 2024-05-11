@@ -1,7 +1,7 @@
 import { useReq } from '@iluhander/uwu-react';
 import { $api } from '../http';
 import { LoadingUserData } from '../../lib/user/userData';
-import extractUserData from '../../lib/user/extractUserData';
+import { extractUserData } from '../../lib/user';
 
 const useGetAuthData = () =>
   useReq(() => $api.get('/user/auth'), {

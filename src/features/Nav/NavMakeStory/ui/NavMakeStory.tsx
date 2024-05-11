@@ -4,7 +4,7 @@ import { ReqStatus } from '@iluhander/uwu-react';
 
 import { createNovel } from '@/shared/common/api/novel/service';
 import { UserDataContext, EUserDataStatus } from '@/shared/common/lib/user/userData';
-import MakeStoryAvaliability from '../lib/MakeStoryAvaliability';
+import MakeStoryAvaliability from '../../../../widgets/Navbar/lib/MakeStoryAvaliability';
 import useShowModal from '@/shared/Modal/lib/useShowModal';
 import { AuxiliaryDataContext } from '@/shared/common/lib/auxiliary/auxiliaryData';
 

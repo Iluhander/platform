@@ -6,10 +6,10 @@ import { isMobile } from 'react-device-detect';
 // Components.
 import AppWrapper from '@/appWrapper';
 import { MarketPlaceSearch } from '@/widgets/MarketPlace/MarketPlaceSearch';
-import MarketPlaceMainContent from '@/widgets/MarketPlace/MarketPlaceMainContent/ui/MarketPlaceMainContent';
+import { MarketPlaceMainContent } from '@/widgets/MarketPlace/MarketPlaceMainContent';
 
 // Utilities.
-import useURLState from '@/shared/common/lib/hooks/useURLState';
+import { useURLState } from '@/shared/common/lib/hooks';
 import { INovel, IPage } from '@/shared/common/model';
 
 // Styles.

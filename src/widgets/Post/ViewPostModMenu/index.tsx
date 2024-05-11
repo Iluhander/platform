@@ -1,11 +1,11 @@
 'use client'
 
-import React, { FC, Suspense, useContext } from 'react';
+import { FC, Suspense, useContext, lazy } from 'react';
 
 import { UserDataContext, EUserDataStatus } from '@/shared/common/lib/user/userData';
 
-const PostModHideMenu = React.lazy(() => import('./ui/PostModHideMenu'));
-const PostModShowMenu = React.lazy(() => import('./ui/PostModShowMenu'));
+const PostModHideMenu = lazy(() => import('./ui/PostModHideMenu'));
+const PostModShowMenu = lazy(() => import('./ui/PostModShowMenu'));
 
 interface IPostModMenuLazyProps {
   postId: string;

@@ -1,0 +1,1 @@
+export { default as ViewPostHeader } from './ui/ViewPostHeader';

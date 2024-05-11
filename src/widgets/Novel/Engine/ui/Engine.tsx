@@ -1,7 +1,7 @@
 'use client'
 
 /* eslint prefer-const:"off", jsx-a11y/click-events-have-key-events:"off", jsx-a11y/no-static-element-interactions:"off" */
-import { useState, useRef, FC, CSSProperties } from 'react';
+import { useRef, FC, CSSProperties } from 'react';
 import { Unity, useUnityContext } from 'react-unity-webgl';
 import { isMobile } from 'react-device-detect';
 import { FullScreen, useFullScreenHandle } from 'react-full-screen';

@@ -1,3 +1,5 @@
+'use client'
+
 import { removeEngineBasePath } from "../engine/engineContext";
 
 class Session {

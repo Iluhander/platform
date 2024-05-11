@@ -5,15 +5,16 @@ import { FC, useContext, useMemo, useRef, useState } from 'react';
 // Utilities.
 import { CommentsContext } from '@/shared/common/lib/comment/CommentsContext';
 import { UserDataContext, EUserDataStatus } from '@/shared/common/lib/user/userData';
-import useShowModal from '@/shared/Modal/lib/useShowModal';
+import { useShowModal } from '@/shared/Modal/lib';
 import { EShowModalType } from '@/shared/Modal/lib';
 import { commentsPerPage } from '@/shared/common/model/constants';
-import Device from '@/shared/common/ui/Device';
+import { Device } from '@/shared/common/ui';
 
 // Components.
 import { CommentsList } from '@/entities/Comments/CommentsList';
-import { CommentBlock } from '@/features/Comments/CommentBlock';
+import { CommentBlock } from '@/entities/Comments/CommentBlock';
 import { CommentForm } from '@/features/Comments/CommentForm';
+import { CommentReplies } from '@/entities/Comments/CommentReplies';
 
 // Styles.
 import './Comments.scss';
@@ -49,6 +50,7 @@ const Comments: FC<{ count?: number }> = ({ count = Infinity }) => {
       <CommentsList
         CommentBlock={CommentBlock}
         CommentForm={CommentForm}
+        CommentReplies={CommentReplies}
       />
       {maxCount === 0 ? <p>Пока что комментариев нет</p> : <div />}
     </>

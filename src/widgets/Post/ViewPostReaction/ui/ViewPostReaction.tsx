@@ -2,8 +2,8 @@
 
 import { FC, ReactNode } from 'react';
 import { Reaction, Reactions } from '@/shared/Reactions';
-import userSession from '@/shared/common/lib/user/userSession';
-import getUserPostReaction from '../api/getUserNovelReaction';
+import { userSession } from '@/shared/common/lib/user';
+import getUserPostReaction from '../api/getUserPostReaction';
 import updatePostReaction from '../api/updatePostReaction';
 import { IPost } from '@/shared/common/model/forum';
 

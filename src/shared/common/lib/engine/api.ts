@@ -1,6 +1,6 @@
 'use client'
 
-import refresher from "../../api/http/auth/refresher";
+import { refresher } from "../../api/http/auth";
 import { ErrorEHandler, SavedEHandler } from "./handlers";
 import { setToWindow, removeFromWindow } from "./setToWindow";
 

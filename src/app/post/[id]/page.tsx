@@ -1,7 +1,7 @@
-import $serverApi from "@/shared/common/api/http/serverApi";
+import { $serverApi } from "@/shared/common/api/http";
 import { IPost } from "@/shared/common/model";
 import ViewPostWrapper from "@/views/Post/page";
-import getPostContent from "@/widgets/Post/ViewPostContent/api/getPostContent";
+import { getPostContent } from "@/widgets/Post/ViewPostContent";
 import { checkSuccessStatus } from "@iluhander/uwu-react";
 import { notFound } from "next/navigation";
 

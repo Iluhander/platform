@@ -1,7 +1,7 @@
 import { useRef, useEffect, useContext, useMemo, useCallback, FC, Dispatch, SetStateAction, CSSProperties } from 'react';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import { GetArrStatus } from '@iluhander/uwu-react';
-import useGetCommentsPage from '../../../shared/common/api/comment/useGetCommentsPage';
+import useGetCommentsPage from '@/shared/common/api/comment/useGetCommentsPage';
 import { CommentContext } from '@/shared/common/lib/comment/СommentContext';
 import { commentsPerPage } from '@/shared/common/model/constants';
 import { CommentsContext } from '@/shared/common/lib/comment/CommentsContext';
@@ -9,9 +9,9 @@ import { IPage } from '@/shared/common/model';
 import { IComment } from '@/shared/common/model/comment';
 
 // Components.
-import { CommentForm } from '../CommentForm';
+import { CommentForm } from '@/features/Comments/CommentForm';
 import { LoadingCircle } from '@/shared/Animated';
-import CommentReplyWrapper from '../CommentForm/ui/CommentReplyWrapper';
+import { CommentReplyWrapper } from '@/features/Comments/CommentForm';
 
 import './CommentReplies.scss';
 

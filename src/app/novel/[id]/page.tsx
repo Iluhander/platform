@@ -1,4 +1,4 @@
-import $serverApi from "@/shared/common/api/http/serverApi";
+import { $serverApi } from "@/shared/common/api/http";
 import NovelPage from "@/views/Novel";
 import { checkSuccessStatus } from "@iluhander/uwu-react";
 import { notFound } from "next/navigation";

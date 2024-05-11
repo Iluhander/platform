@@ -1,7 +1,7 @@
 import axios from 'axios';
 import apiErrAuthHandler from './auth/apiErrAuthHandler';
 import apiErrRetryHandler from './auth/apiErrRetryHandler';
-import userSession from '../../lib/user/userSession';
+import { userSession } from '../../lib/user';
 
 const $api = axios.create({
   withCredentials: true,

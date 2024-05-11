@@ -1,0 +1,1 @@
+export { default as MarketPlace } from './ui/page';

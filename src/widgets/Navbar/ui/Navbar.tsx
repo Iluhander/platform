@@ -1,8 +1,8 @@
 import Link from 'next/link';
-import MiniLogo from '@/shared/MiniLogo/MiniLogo';
-import NavUserMenu from './NavUserMenu/NavUserMenu';
 
-import NavMakeStory from './NavMakeStory';
+import MiniLogo from '@/shared/MiniLogo/MiniLogo';
+import { NavUserMenu } from '@/features/Nav/NavUserMenu';
+import { NavMakeStory } from '@/features/Nav/NavMakeStory';
 
 import './Navbar.scss';
 

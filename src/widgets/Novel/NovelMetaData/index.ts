@@ -1,0 +1,1 @@
+export { default as NovelMetaData } from './ui/NovelMetaData';

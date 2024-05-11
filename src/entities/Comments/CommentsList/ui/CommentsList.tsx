@@ -15,9 +15,10 @@ import { commentsPerPage } from '@/shared/common/model/constants';
 interface ICommentsListProps {
   CommentBlock: FC<any>;
   CommentForm: FC<any>;
+  CommentReplies: FC<any>;
 }
 
-const CommentsList: FC<ICommentsListProps> = ({ CommentBlock, CommentForm }) => {
+const CommentsList: FC<ICommentsListProps> = ({ CommentBlock, CommentForm, CommentReplies }) => {
   const { userData } = useContext(UserDataContext);
   const { currentlyReplyingTo, callReplyTo, setMaxCount } = useContext(CommentsContext);
   const { data: commentsData, status, setData, exec } = useGetCommentsPage();
@@ -136,6 +137,7 @@ const CommentsList: FC<ICommentsListProps> = ({ CommentBlock, CommentForm }) => 
             index={i % commentsPerPage}
             increaseCommentsCount={increaseCommentsCount}
             key={`cb${comment.id}`}
+            CommentReplies={CommentReplies}
           />
         ))}
         {status === GetArrStatus.LOADING && !data.length && <LoadingCircle />}

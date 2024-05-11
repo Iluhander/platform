@@ -1,5 +1,5 @@
 import axios from 'axios';
-import userSession from '../../../lib/user/userSession';
+import { userSession } from '@/shared/common/lib/user';
 
 export default function logOutApi() {
   return axios.post(

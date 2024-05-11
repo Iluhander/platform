@@ -6,7 +6,7 @@ import Tag from "@/shared/Tag/Tag";
 import NovelModMenuLazy from "@/features/Novel/NovelModMenu";
 import NovelAuthorElem from "@/features/Novel/NovelAuthorElem/ui/NovelAuthorElem";
 import NovelEngineProvider from "@/features/Novel/NovelEngineProvider";
-import NovelReaction from "@/features/Novel/NovelReaction";
+import { NovelReaction } from "@/features/Novel/NovelReaction";
 
 const NovelMetaData: FC<{ data: INovel }> = ({ data }) => {
   return (

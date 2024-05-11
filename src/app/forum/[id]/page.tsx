@@ -1,7 +1,7 @@
-import $serverApi from "@/shared/common/api/http/serverApi";
+import { $serverApi } from "@/shared/common/api/http";
 import { IPost, IForumSearch, IPage } from "@/shared/common/model";
-import Forum from "@/views/Forum/page";
-import getForumNavContent from "@/widgets/Forum/ForumNav/api/getForumNavContent";
+import { Forum } from "@/views/Forum";
+import { getForumNavContent } from "@/features/Forum/ForumNav";
 import { checkSuccessStatus } from "@iluhander/uwu-react";
 
 type IForumDataWrapperProps = {

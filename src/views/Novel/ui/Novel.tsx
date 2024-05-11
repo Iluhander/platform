@@ -7,7 +7,7 @@ import { INovel } from '@/shared/common/model';
 // Components.
 import { Engine } from '@/widgets/Novel/Engine';
 import { Comments } from '@/widgets/Comments';
-import NovelMetaData from '@/widgets/Novel/NovelMetaData/ui/NovelMetaData';
+import { NovelMetaData } from '@/widgets/Novel/NovelMetaData';
 
 // Styles.
 import './Novel.scss';

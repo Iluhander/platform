@@ -2,12 +2,12 @@ import { useContext, useState } from 'react';
 import Link from 'next/link';
 
 // Utilities.
-import logOutApi from '@/shared/common/api/http/auth/logOutApi';
+import { logOutApi } from '@/shared/common/api/http/auth';
 import { EUserDataStatus, UserDataContext } from '@/shared/common/lib/user/userData';
-import SmoothHidingItemStatus from '@/shared/Animated/SmoothItem/SmoothHidingItemStatus';
-import userSession from '@/shared/common/lib/user/userSession';
+import { SmoothHidingItemStatus } from '@/shared/Animated';
+import { userSession } from '@/shared/common/lib/user';
 import { AuxiliaryDataContext } from '@/shared/common/lib/auxiliary/auxiliaryData';
-import Device from '@/shared/common/ui/Device';
+import { Device } from '@/shared/common/ui';
 
 // Components.
 import { LoadingDots, SpanList, SmoothHidingItem } from '@/shared/Animated';

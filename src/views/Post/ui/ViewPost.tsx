@@ -1,5 +1,5 @@
-import ViewPostHeader from '@/widgets/Post/ViewPostHeader/ui/ViewPostHeader';
-import ViewPostContent from '@/widgets/Post/ViewPostContent/ui/ViewPostContent';
+import { ViewPostHeader } from '@/widgets/Post/ViewPostHeader';
+import { ViewPostContent } from '@/widgets/Post/ViewPostContent';
 import { Comments } from '@/widgets/Comments';
 import { ViewPostReaction } from '@/widgets/Post/ViewPostReaction';
 import PostModMenuLazy from '@/widgets/Post/ViewPostModMenu';
