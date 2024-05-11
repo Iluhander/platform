@@ -72,7 +72,7 @@ export default function ErrorFallback() {
             <a href="/team">
               <img src="/images/redlightsaber.png" alt="" />
               Перейти на их сторону{' '}
-              <span className="errorFallbackVariantsHint">(стать разработчиком "UwU Novels")</span>
+              <span className="errorFallbackVariantsHint">(стать разработчиком &quot;UwU Novels&quot;)</span>
             </a>
           </li>
         </ul>
