@@ -8,6 +8,7 @@ import { INovelSearch } from '@/shared/common/model';
 import { isMobile } from 'react-device-detect';
 
 import MarketPlaceAuthorFilter from '@/features/Market/MarketPlaceAuthorFilter';
+import MarketPlaceFAQ from '@/features/Market/MarketPlaceFAQ';
 
 import './MarketPlaceSearch.scss';
 
@@ -162,9 +163,7 @@ const MarketPlaceSearch: FC<IMarketPlaceSearch> = ({ defaultSearch, search, setS
           <div />
         )}
       </form>
-      {/* <div className="marketFAQ">
-        <a href="/team">FAQ</a>
-      </div> */}
+      {(!(isMobile && !hidden)) && <MarketPlaceFAQ style={isMobile ? { marginLeft: -6 } : { marginTop: 16 }} />}
     </aside>
   );
 }

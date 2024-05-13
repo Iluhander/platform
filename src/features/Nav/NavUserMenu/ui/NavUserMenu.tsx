@@ -1,5 +1,8 @@
+'use client'
+
 import { useContext, useState } from 'react';
 import Link from 'next/link';
+import { isMobile } from 'react-device-detect';
 
 // Utilities.
 import { logOutApi } from '@/shared/common/api/http/auth';
@@ -33,7 +36,7 @@ export default function NavUserMenu() {
   let modElem = <div />;
   let navIcon = (
     <img
-      src={`/icons/user.png`}
+      src="/icons/user.png"
       className="navUserMenuIcon"
       alt="Моя страница"
     />
@@ -84,10 +87,12 @@ export default function NavUserMenu() {
         </>
       );
     }
-  } else if (userData.status === EUserDataStatus.NOT_AUTHENTICATED) {
-    authElem = <SpanList href="/login" text="Войти" className="navUserMenuSpanList" />;
   } else {
-    authElem = <LoadingDots />;
+      if (userData.status === EUserDataStatus.NOT_AUTHENTICATED) {
+      authElem = <SpanList href="/login" text="Войти" className="navUserMenuSpanList" />;
+    } else {
+      authElem = <LoadingDots />;
+    }
   }
 
   let featureElem = <div />;
@@ -106,13 +111,13 @@ export default function NavUserMenu() {
       }}
     >
       {featureElem}
-      <Device>
+      {/* <Device>
         {({ isMobile }) => isMobile ? (
         <a href="/mynovels">{navIcon}</a>
         ) : (
           <div>{navIcon}</div>
         )}
-      </Device>
+      </Device> */}
       <SmoothHidingItem
         className="navUserList"
         status={userListStatus}

@@ -25,7 +25,7 @@ export default function getUnityBuild(
 
   // This is for testing with different Unity builds.
 
-  if (localStorage.getItem('testFilesNames')) {
+  if (typeof window !== "undefined" && window.localStorage.getItem('testFilesNames')) {
     // @ts-ignore
     const testFilesNames = JSON.parse(localStorage.getItem('testFilesNames'));
 

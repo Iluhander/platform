@@ -1,5 +1,5 @@
 export function setToWindow(key: string, value: any) {
-  if (!key) {
+  if (!key || (typeof window === "undefined")) {
     return;
   }
 

@@ -1,5 +1,3 @@
-'use client'
-
 import { refresher } from "../../api/http/auth";
 import { ErrorEHandler, SavedEHandler } from "./handlers";
 import { setToWindow, removeFromWindow } from "./setToWindow";
@@ -27,18 +25,24 @@ class EngineAPI {
   };
 
   private constructor() {
-    document.getElementById(EngineAPI.__bridgeElemId)?.addEventListener(
-      EngineAPI.__eventName,
-      // @ts-ignore
-      (e) => this.__events[e.data.name].handle(e.data.payload),
-      false,
-    );
+    if (typeof window !== "undefined") {
+      window.document.getElementById(EngineAPI.__bridgeElemId)?.addEventListener(
+        EngineAPI.__eventName,
+        // @ts-ignore
+        (e) => this.__events[e.data.name].handle(e.data.payload),
+        false,
+      );
+    }
 
     setToWindow('refresh', refresher.refresh.bind(refresher));
     setToWindow('provideEngineAPI', this.__provideEngineAPI.bind(this));
   }
 
   public static instantiate() {
+    if (typeof window === "undefined") {
+      return;
+    }
+
     let host = document.getElementById(EngineAPI.__bridgeElemId) as any;
     if (!host) {
       const bridgeElem = document.createElement('div');

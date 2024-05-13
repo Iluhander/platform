@@ -1,11 +1,13 @@
-'use client'
-
 import { removeEngineBasePath } from "../engine/engineContext";
 
 class Session {
   tokenName = 'userToken';
 
   getToken() {
+    if (typeof window === "undefined") {
+      return '-';
+    }
+
     return localStorage.getItem(this.tokenName);
   }
 

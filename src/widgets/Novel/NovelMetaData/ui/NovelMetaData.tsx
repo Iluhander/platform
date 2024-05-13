@@ -1,4 +1,5 @@
 import { FC } from "react";
+
 import { INovel } from "@/shared/common/model";
 
 // Components.
@@ -29,7 +30,7 @@ const NovelMetaData: FC<{ data: INovel }> = ({ data }) => {
         </a>
         , <span itemProp="datePublished">{data.publicationDate}</span>
       </p>
-      <p className="novelDataText">
+      <div className="novelDataText" style={{ marginBottom: 8 }}>
         <Tag
           text={data.genre}
           href={`/?genre=${encodeURIComponent(data.genre)}`}
@@ -41,7 +42,7 @@ const NovelMetaData: FC<{ data: INovel }> = ({ data }) => {
             itemProp: 'genre'
           }}
         />
-      </p>
+      </div>
       <div className="novelStatsDiv">
         <NovelReaction data={data} />
         {data.commentsCount && data.commentsCount > 0 ? (

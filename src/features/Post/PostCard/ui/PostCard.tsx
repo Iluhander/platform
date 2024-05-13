@@ -1,7 +1,7 @@
+import { FC } from 'react';
+
 import { IPost } from '@/shared/common/model/forum';
 import { ViewReaction } from '@/shared/Reactions';
-
-import { FC } from 'react';
 
 import s from './PostCard.module.scss';
 

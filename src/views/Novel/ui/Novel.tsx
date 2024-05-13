@@ -3,11 +3,13 @@ import { FC } from 'react';
 
 // Utils.
 import { INovel } from '@/shared/common/model';
+import isSSR from '@/shared/common/lib/isSSR';
 
 // Components.
-import { Engine } from '@/widgets/Novel/Engine';
+import { Engine } from '@/features/Novel/Engine';
 import { Comments } from '@/widgets/Comments';
 import { NovelMetaData } from '@/widgets/Novel/NovelMetaData';
+import { EngineContainer } from '@/entities/Engine/EngineContainer';
 
 // Styles.
 import './Novel.scss';
@@ -30,7 +32,7 @@ const Novel: FC<{ novelData: INovel }> = ({ novelData }) => {
           <h1 className="novelTitle" itemProp="name">
             {novelData?.title || 'Безымянная новелла'}
           </h1>
-          <Engine fullScreenElems={fullScreenElems} playMode />
+          <EngineContainer Engine={Engine} fullScreenElems={fullScreenElems} playMode />
         </div>
         <NovelMetaData data={novelData} />
       </main>
