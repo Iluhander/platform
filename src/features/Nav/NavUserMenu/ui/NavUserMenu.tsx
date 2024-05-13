@@ -111,13 +111,13 @@ export default function NavUserMenu() {
       }}
     >
       {featureElem}
-      {/* <Device>
+      <Device>
         {({ isMobile }) => isMobile ? (
         <a href="/mynovels">{navIcon}</a>
         ) : (
           <div>{navIcon}</div>
         )}
-      </Device> */}
+      </Device>
       <SmoothHidingItem
         className="navUserList"
         status={userListStatus}
