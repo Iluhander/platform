@@ -91,3 +91,20 @@
   background: var(--background-contrast);
   font-family:'Courier New', Courier, monospace;
 }
+
+.niceInput {
+  background: none;
+  padding: 8px;
+  border: none;
+  cursor: pointer;
+
+  color: white;
+}
+
+.niceInput {
+  border-radius: 8px;
+}
+
+.niceInput:focus {
+  outline: none;
+}

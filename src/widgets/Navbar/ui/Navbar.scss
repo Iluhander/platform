@@ -9,7 +9,7 @@
   padding-bottom: 6px;
 
   display: grid;
-  grid-template-columns: 60px 80px 80px auto 200px;
+  grid-template-columns: 60px 80px 130px 140px auto 200px;
   
   font-weight: 600;
 
@@ -51,9 +51,9 @@
   display: none;
 }
 
-@media (max-width: 540px) {
+@media (max-width: 570px) {
   .mainNav {
-    grid-template-columns: 60px 80px auto auto;
+    grid-template-columns: 60px 80px 100px auto 70px;
 
     > a:nth-child(n + 4) {
       display: none;

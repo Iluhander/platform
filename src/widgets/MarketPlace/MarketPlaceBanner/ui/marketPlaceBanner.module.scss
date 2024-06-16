@@ -1,0 +1,18 @@
+.marketPlaceBanner {
+  border-radius: 6px;
+  border: 2px solid var(--background);
+  transition: 0.5s border;
+  background-size: cover;
+  background-position: center;
+
+  display: flex;
+  padding: 4px 16px;
+  flex-direction: column;
+  justify-content: center;
+
+  color: white;
+}
+
+.marketPlaceBanner:hover {
+  border: 2px solid var(--main-color);
+}

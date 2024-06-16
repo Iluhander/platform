@@ -1,22 +1,24 @@
 'use client'
 
 import { ReqStatus } from "@iluhander/uwu-react";
-import { FC, useRef, useState } from "react";
+import { FC, useEffect, useRef, useState } from "react";
 import { isMobile } from "react-device-detect";
 import { FullScreen, useFullScreenHandle } from "react-full-screen";
-import { IEngineProps } from "@/features/Novel/Engine/lib/types";
+import { StrictClient } from "@/shared/common/ui";
 
 interface IEngineContainerProps {
-  Engine: FC<IEngineProps>;
+  Engine: FC<any>;
   playMode: boolean;
   fullScreenElems: string[];
 }
-import { LoadingDots } from "@/shared/Animated";
+import { LoadingDots, ProgressionLoader } from "@/shared/Animated";
 
 import s from './EngineContainer.module.scss';
 
 const EngineContainer: FC<IEngineContainerProps> = ({ Engine, playMode, fullScreenElems }) => {
   const [engineStatus, setEngineStatus] = useState(ReqStatus.LOADING);
+  const [loadingProgression, setLoadingProgression] = useState(0);
+
   const screenHandle = useFullScreenHandle();
   
   const engineBlock = useRef<HTMLDivElement>(null);
@@ -48,11 +50,17 @@ const EngineContainer: FC<IEngineContainerProps> = ({ Engine, playMode, fullScre
     <div>
       <FullScreen handle={screenHandle}>
         <div ref={engineBlock} className={`${containerClass} engineBlock`}>
-          <Engine playMode={playMode} setEngineStatus={setEngineStatus} className={unityClass} />
+          <StrictClient
+            FC={Engine}
+            playMode={playMode}
+            setEngineStatus={setEngineStatus}
+            setLoadingProgression={setLoadingProgression}
+            className={unityClass}
+          />
           {engineStatus === ReqStatus.LOADING && (
             <div className={s.engineContainer__loader}>
               <p> Загружаем движок </p>
-              <LoadingDots count={3} />
+              <ProgressionLoader max={10} cur={loadingProgression * 10} />
             </div>
           )}
           {screenHandle.active ? (

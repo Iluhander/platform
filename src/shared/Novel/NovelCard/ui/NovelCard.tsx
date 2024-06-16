@@ -4,7 +4,7 @@ import animateSwap from '@/shared/common/lib/utils/animateSwap';
 
 import { ViewReaction } from '@/shared/Reactions';
 
-import './NovelCard.scss';
+import s from './novelCard.module.scss';
 
 export interface INovelCardAttrs {
   novel: INovel;
@@ -36,7 +36,7 @@ export default function NovelCard({ novel, reaction }: INovelCardAttrs) {
       return;
     }
 
-    animateSwap(e.currentTarget.children[0], e.currentTarget.children[1], 'block', 450);
+    animateSwap(e.currentTarget.children[0], e.currentTarget.children[1], 'block', 480);
   }
 
   function mouseLeaveHandler(e: any) {
@@ -44,7 +44,7 @@ export default function NovelCard({ novel, reaction }: INovelCardAttrs) {
       return;
     }
 
-    animateSwap(e.currentTarget.children[1], e.currentTarget.children[0], 'unset', 450);
+    animateSwap(e.currentTarget.children[1], e.currentTarget.children[0], 'unset', 480);
     // const card = e.currentTarget.children[0];
     // card.style.display = 'unset';
 
@@ -56,35 +56,35 @@ export default function NovelCard({ novel, reaction }: INovelCardAttrs) {
     // For some reason, doesnt fetch comments with next/link.
     <a href={`/novel/${id}`} style={{ textDecoration: 'none' }}>
       <article
-        className="novelArticle"
+        className={s.novelArticle}
         onMouseEnter={mouseEnterHandler}
         onMouseLeave={mouseLeaveHandler}
         itemScope
         itemType="https://schema.org/Game"
       >
         {imgURL ? (
-          <img src={`${imgURL}`} alt={`История "${title}"`} className="novelImg" itemProp="image" />
+          <img src={`${imgURL}`} alt={`История "${title}"`} className={s.novelImg} itemProp="image" />
         ) : (
           <div />
         )}
         <p
           style={{ display: imgURL ? 'none' : 'unset' }}
-          className="cardDescription"
+          className={s.cardDescription}
           itemProp="description"
         >
           {description}
           {author.username && (
-            <span className="cardDescriptionAuthor">
+            <span className={s.cardDescriptionAuthor}>
               <br />
               {author.username}
             </span>
           )}
         </p>
         <h3 itemProp="name">{title}</h3>
-        <p className="novelGenre" itemProp="genre">
+        <p className={s.novelGenre} itemProp="genre">
           {genre}
         </p>
-        <div className="novelStatsDiv">
+        <div className={s.novelStatsDiv}>
           {!likesCount && !commentsCount ? (
             <div>
               <p style={{ margin: 0, color: 'rgba(255, 255, 255, 0.366)' }}>Пока нет оценок</p>

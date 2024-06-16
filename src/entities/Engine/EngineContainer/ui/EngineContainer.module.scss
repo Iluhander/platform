@@ -3,21 +3,23 @@
     position: relative;
 
     width: max(60vw, 600px);
-    height: max(34vw, 330px);
+    aspect-ratio: 16 / 9;
   }
 
   &__mobile {
     position: relative;
 
     width: max(60vw, 300px);
-    height: max(34vw, 168px);
+    aspect-ratio: 16 / 9;
   }
 
-  &__fullscreenContainer {
+  &__fullscreen {
     position: relative;
 
     width: 99vw;
     height: 99vh;
+    display: flex;
+    align-items: center;
   }
 
   &__unity {
@@ -28,7 +30,7 @@
 
   &__fullscreenUnity {
     width: 100%;
-    height: 100%;
+    aspect-ratio: 16 / 9;
     border-radius: 0;
   }
 

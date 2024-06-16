@@ -3,7 +3,7 @@ import { DefaultUserName } from '@/shared/common/lib/user/userData';
 import { IComment } from '@/shared/common/model/comment';
 import Device from '@/shared/common/ui/Device';
 
-import './Comment.scss';
+import s from './comment.module.scss';
 
 const handleUserName = (username: string) => (username ? `${username}` : DefaultUserName);
 
@@ -39,11 +39,11 @@ const Comment: FC<ICommentProps> = ({
   return (
     <article
       style={elemStyle}
-      className={`novelComment ${sizeClass}`}
+      className={`${s.comment} ${sizeClass}`}
       itemType="https://schema.org/Comment"
       itemProp="review"
     >
-      <div className="commentHead">
+      <div className={s.commentHead}>
         <a
           href={`/viewprofile?id=${comment.author?.id}`}
           target="_blank"
@@ -51,7 +51,7 @@ const Comment: FC<ICommentProps> = ({
         >
           <img src={avatarURL} alt="User" className="authorMiniAvatar" />
         </a>
-        <div className="commentHeadBlock">
+        <div className={s.commentHeadBlock}>
           <div>
             <a
               href={`/viewprofile?id=${comment.author?.id}`}
@@ -82,10 +82,10 @@ const Comment: FC<ICommentProps> = ({
             {comment.date}
           </p>
         </div>
-        <div className="commentReplyBlock">
+        <div className={s.commentReplyBlock}>
           {menuComponent}
           <button
-            className="highlightedImg"
+            className={s.highlightedImg}
             type="button"
             onClick={(e) => {
               e.preventDefault();
@@ -101,8 +101,8 @@ const Comment: FC<ICommentProps> = ({
           </button>
         </div>
       </div>
-      <div className="commentBody">
-        <p className="commentText" itemProp="reviewBody">
+      <div className={s.commentBody}>
+        <p className={s.commentText} itemProp="reviewBody">
           {comment.text}
         </p>
         {comment.img && <img src={comment.img} alt="commentImage" />}

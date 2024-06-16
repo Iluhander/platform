@@ -1,3 +1,8 @@
+.navUserMenu {
+  position: relative;
+  overflow: visible !important;
+}
+
 .navUserMenuAppearing {
   .navUserList {
     display: flex;
@@ -37,7 +42,7 @@
 
 .navUserList {
   position: absolute;
-  right: 76px;
+  right: 66px;
 
   background: var(--background-contrast2);
   border: 2px solid var(--main-color);
@@ -115,22 +120,28 @@
 }
 
 .navFeatureItem {
-  right: 76px;
-  top: 4px;
+  right: 56px;
+  top: -10px;
   width: 24px;
   height: 24px;
   position: absolute;
   z-index: 510;
 }
 
-@media (max-width: 540px) {
-  .navUserMenu {
-    img {
-      margin-left: 50px;
-    }
+@media (max-width: 570px) {
+  .navUserMenuIcon {
+    margin-left: 0;
   }
 
   .navFeatureItem {
-    right: 66px;
+    width: 18px;
+    height: 18px;
+    right: 30px;
+    top: -6px;
+  }
+
+  .navUserList {
+    position: absolute;
+    right: 40px;
   }
 }

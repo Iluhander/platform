@@ -110,22 +110,6 @@
   border-bottom: 2px solid white;
 }
 
-.marketFilterSelector, .marketFilterDiv input {
-  background: none;
-  padding: 8px;
-  border: none;
-
-  color: white;
-}
-
-.marketFilterSelector {
-  border-radius: 8px;
-}
-
-.marketFilterSelector:focus, .marketFilterDiv input:focus {
-  outline: none;
-}
-
 .marketSearchInput input {
   padding-left: 0;
   filter: saturate(0);

@@ -1,0 +1,17 @@
+@keyframes colorify {
+  0% {
+    color: white;
+  }
+
+  100% {
+    color: var(--main-color);
+  }
+}
+
+.progressionLoader__it {
+  font-size: 18px;
+}
+
+.progressionLoader__itColored {
+  animation: colorify 0.4s forwards;
+}

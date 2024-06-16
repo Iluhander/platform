@@ -3,7 +3,6 @@ import { FC } from 'react';
 
 // Utils.
 import { INovel } from '@/shared/common/model';
-import isSSR from '@/shared/common/lib/isSSR';
 
 // Components.
 import { Engine } from '@/features/Novel/Engine';

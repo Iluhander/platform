@@ -29,7 +29,7 @@ const MarketPlaceSearch: FC<IMarketPlaceSearch> = ({ defaultSearch, search, setS
     const extracted = extractByRef(filtersForm) as INovelSearch;
 
     if (extracted.author && extracted.author !== defaultSearch.author) {
-      extracted.userID = userData.id;
+      extracted.userId = userData.id;
     }
 
     setSearch(extracted);
@@ -98,6 +98,7 @@ const MarketPlaceSearch: FC<IMarketPlaceSearch> = ({ defaultSearch, search, setS
             inputMode="search"
             name="title"
             placeholder="🔍  Искать новеллы..."
+            className="niceInput"
             onChange={handleNameChange}
             defaultValue={search.title || ''}
           />
@@ -107,7 +108,7 @@ const MarketPlaceSearch: FC<IMarketPlaceSearch> = ({ defaultSearch, search, setS
             name="genre"
             // @ts-ignore
             placeholder="Жанр..."
-            className="marketFilterSelector"
+            className="marketFilterSelector niceInput"
             onChange={onFieldChange}
             defaultValue={search.genre}
           >
@@ -126,7 +127,7 @@ const MarketPlaceSearch: FC<IMarketPlaceSearch> = ({ defaultSearch, search, setS
         </div>
         <div className="marketFilterDiv">
           <div className="marketFilterDivSortLabel">
-            <p>Сотировать по</p>
+            <p>Сортировать по</p>
             <img src="/icons/sort.png" alt="sort" />
           </div>
           <div className="marketFilterDiv selectDivInput">
@@ -134,7 +135,7 @@ const MarketPlaceSearch: FC<IMarketPlaceSearch> = ({ defaultSearch, search, setS
               name="sortBy"
               // @ts-ignore
               placeholder="Сортировать..."
-              className="marketFilterSelector"
+              className="marketFilterSelector niceInput"
               onChange={onFieldChange}
               defaultValue={search.sortBy}
             >

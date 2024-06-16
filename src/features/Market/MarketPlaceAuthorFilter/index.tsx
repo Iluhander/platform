@@ -20,7 +20,7 @@ const MarketPlaceAuthorFilter: FC<IMarketPlaceAuthorFilterProps> = ({ onFieldCha
         name="author"
         // @ts-ignore
         placeholder="Автор"
-        className="marketFilterSelector"
+        className="marketFilterSelector niceInput"
         onChange={(e) => {
           if (authenticated) {
             onFieldChange(e);

@@ -11,8 +11,9 @@ export default function Navbar() {
     <nav className="mainNav">
       <MiniLogo withSecret className="mainNavLogo" />
       <Link href="/">Играть</Link>
-      <Link href="/forum">Форум</Link>
+      <Link href="/forum">Обсуждение</Link>
       <NavMakeStory />
+      <div />
       <NavUserMenu />
     </nav>
   );

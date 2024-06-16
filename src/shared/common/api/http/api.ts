@@ -19,7 +19,7 @@ $api.interceptors.response.use(
   async (error) => {
     let shouldRequest = false;
     shouldRequest ||= await apiErrAuthHandler(error);
-    shouldRequest ||= await apiErrRetryHandler(error);
+    // shouldRequest ||= await apiErrRetryHandler(error);
 
     if (shouldRequest) {
       return $api.request(error.config);

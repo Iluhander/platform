@@ -27,10 +27,12 @@ export default async function MarketPlaceDataWrapper(props: IMarketPlaceDataWrap
   let initalData: IPage<INovel> = { index: 0, data: [], maxCount: 0 };
 
   const params = new URLSearchParams(props.searchParams as any).toString();
-  const { data, status } = await $serverApi.post(`/novel/page?${params}`, {});
-  if (checkSuccessStatus(status)) {
-    initalData = data;
-  }
+  try {
+    const { data, status } = await $serverApi.post(`/novel/page?${params}`, {});
+    if (checkSuccessStatus(status)) {
+      initalData = data;
+    } 
+  } catch (e) {}
 
   return <MarketPlace initialData={initalData} />;
 }

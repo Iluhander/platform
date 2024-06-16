@@ -38,8 +38,8 @@
   background-image: url("../../../../../public/icons/panescreen.png");
   display: block;
 
-  top: 44px;
-  left: 94vw;
+  top: 6vh;
+  right: 10px;
 }
 
 .engineMobile {

@@ -113,9 +113,9 @@ export default function NavUserMenu() {
       {featureElem}
       <Device>
         {({ isMobile }) => isMobile ? (
-        <a href="/mynovels">{navIcon}</a>
-        ) : (
           <div>{navIcon}</div>
+        ) : (
+          <a href="/mynovels">{navIcon}</a>
         )}
       </Device>
       <SmoothHidingItem

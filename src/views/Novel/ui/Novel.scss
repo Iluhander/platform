@@ -16,6 +16,7 @@
     width: max(32vw, 340px);
     margin-top: 0;
 
+    font-size: 28px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -93,7 +94,7 @@
   align-items: flex-start;
   justify-content: flex-start;
 
-  padding: 20px;
+  padding: 16px;
 
   input, textarea, select {
     border-radius: 6px;
@@ -202,6 +203,9 @@
 
 .novelDescriptionView {
   width: 300px;
+  max-height: 150px;
+  overflow: hidden;
+  word-wrap: break-word;
 }
 
 #novelButtons {

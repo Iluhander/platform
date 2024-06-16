@@ -20,7 +20,7 @@ const defaultSearch = {
   title: '',
   genre: 'Любой жанр',
   author: 'Всех авторов',
-  userID: '',
+  userId: '',
   sortBy: 'Новизне'
 };
 
