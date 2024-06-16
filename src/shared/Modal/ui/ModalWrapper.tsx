@@ -40,6 +40,9 @@ export default function ModalWrapper() {
     case EModalVariant.GLOBAL:
       modal = <GlobalModal {...propsData} />;
       break;
+    case EModalVariant.CUSTOM:
+      modal = <propsData.Component status={status} {...propsData} />;
+      break;
     default:
       return <div />;
   }

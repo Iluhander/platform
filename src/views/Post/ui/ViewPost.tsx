@@ -17,7 +17,7 @@ const ViewPost: FC<IViewPostProps> = ({ data, content }) => {
   return (
     <div itemScope className="postPage" itemType="https://schema.org/Article">
       <ViewPostHeader data={data} />
-      <ViewPostContent content={content} />
+      <ViewPostContent content={content} id={data.id} />
       <ViewPostReaction data={data}>
         <PostModMenuLazy postId={data.id} hidden={data.hidden} />
       </ViewPostReaction>

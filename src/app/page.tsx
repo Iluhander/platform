@@ -31,7 +31,7 @@ export default async function MarketPlaceDataWrapper(props: IMarketPlaceDataWrap
     const { data, status } = await $serverApi.post(`/novel/page?${params}`, {});
     if (checkSuccessStatus(status)) {
       initalData = data;
-    } 
+    }
   } catch (e) {}
 
   return <MarketPlace initialData={initalData} />;

@@ -32,7 +32,8 @@ export enum EModalVariant {
   ACTIVATE_GLOBAL,
   AUTH_GLOBAL,
   GLOBAL,
-  ERR_MODAL
+  ERR_MODAL,
+  CUSTOM
 }
 
 export enum EModalStatus {

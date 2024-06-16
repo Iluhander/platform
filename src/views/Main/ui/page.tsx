@@ -21,7 +21,7 @@ export default function Main() {
         </p>
       ),
       link: {
-        href: '/',
+        href: '/mynovels',
         text: 'Попробовать →'
       },
       forward: true

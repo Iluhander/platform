@@ -42,7 +42,7 @@
 
 .navUserList {
   position: absolute;
-  right: 66px;
+  right: 58px;
 
   background: var(--background-contrast2);
   border: 2px solid var(--main-color);
@@ -121,7 +121,7 @@
 
 .navFeatureItem {
   right: 56px;
-  top: -10px;
+  bottom: 22px;
   width: 24px;
   height: 24px;
   position: absolute;
@@ -133,15 +133,19 @@
     margin-left: 0;
   }
 
+  .navUserAvatar {
+    margin-left: 0;
+  }
+
   .navFeatureItem {
     width: 18px;
     height: 18px;
     right: 30px;
-    top: -6px;
+    top: 0px;
   }
 
   .navUserList {
     position: absolute;
-    right: 40px;
+    right: 30px;
   }
 }

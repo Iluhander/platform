@@ -1,0 +1,35 @@
+.zoomedImgContainer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  width: 100vw;
+  height: 100vh;
+
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(2px);
+  cursor: pointer;
+
+  box-sizing: border-box;
+  padding: 20px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.zoomedImgContainer__main {
+  min-width: 20vw;
+  max-width: 90vw;
+  max-height: 90vh;
+}
+
+.zoomedImgContainer__close {
+  border-radius: 6px;
+  padding: 10px;
+  font-size: 18px;
+
+  background-color: var(--background);
+}

@@ -8,11 +8,12 @@ import NovelModMenuLazy from "@/features/Novel/NovelModMenu";
 import NovelAuthorElem from "@/features/Novel/NovelAuthorElem/ui/NovelAuthorElem";
 import NovelEngineProvider from "@/features/Novel/NovelEngineProvider";
 import { NovelReaction } from "@/features/Novel/NovelReaction";
+import { Img } from "@/shared/Img";
 
 const NovelMetaData: FC<{ data: INovel }> = ({ data }) => {
   return (
     <section className="novelDescriptionBlock novelDataView">
-      <img
+      <Img
         className="novelCover"
         src={`${process.env.NEXT_PUBLIC_ASSETS}/static/cover/novel/${data.id}?v=${data.coverVersion}`}
         alt={data.title}
