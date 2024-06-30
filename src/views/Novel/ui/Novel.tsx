@@ -9,6 +9,7 @@ import { Engine } from '@/features/Novel/Engine';
 import { Comments } from '@/widgets/Comments';
 import { NovelMetaData } from '@/widgets/Novel/NovelMetaData';
 import { EngineContainer } from '@/entities/Engine/EngineContainer';
+import { EngineAPIProvider } from '@/shared/common/lib/engine/EngineAPIProvider';
 
 // Styles.
 import './Novel.scss';
@@ -31,7 +32,12 @@ const Novel: FC<{ novelData: INovel }> = ({ novelData }) => {
           <h1 className="novelTitle" itemProp="name">
             {novelData?.title || 'Безымянная новелла'}
           </h1>
-          <EngineContainer Engine={Engine} fullScreenElems={fullScreenElems} playMode />
+          <EngineAPIProvider
+            novelData={novelData}
+            playMode
+          >
+            <EngineContainer Engine={Engine} fullScreenElems={fullScreenElems} />
+          </EngineAPIProvider>
         </div>
         <NovelMetaData data={novelData} />
       </main>

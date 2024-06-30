@@ -6,7 +6,6 @@ import { INovel } from "@/shared/common/model";
 import Tag from "@/shared/Tag/Tag";
 import NovelModMenuLazy from "@/features/Novel/NovelModMenu";
 import NovelAuthorElem from "@/features/Novel/NovelAuthorElem/ui/NovelAuthorElem";
-import NovelEngineProvider from "@/features/Novel/NovelEngineProvider";
 import { NovelReaction } from "@/features/Novel/NovelReaction";
 import { Img } from "@/shared/Img";
 
@@ -59,7 +58,6 @@ const NovelMetaData: FC<{ data: INovel }> = ({ data }) => {
       </div>
       <NovelModMenuLazy novelId={data.id} hidden={data.hidden} />
       <NovelAuthorElem novelData={data} />
-      <NovelEngineProvider novelData={data} />
     </section>
   );
 }

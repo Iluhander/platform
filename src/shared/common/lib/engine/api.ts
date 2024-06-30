@@ -1,5 +1,6 @@
 import { refresher } from "../../api/http/auth";
-import { ErrorEHandler, SavedEHandler } from "./handlers";
+import { P } from "../dev/log";
+import { ErrorEHandler, PongEHandler, SavedEHandler } from "./handlers";
 import { setToWindow, removeFromWindow } from "./setToWindow";
 
 const engineHandles: Record<string, string> = {
@@ -10,6 +11,7 @@ const engineHandles: Record<string, string> = {
 
 interface IEngineBridge {
   saveNovel: () => void;
+  ping: () => void;
 }
 
 class EngineAPI {
@@ -20,6 +22,7 @@ class EngineAPI {
   private __bridge?: IEngineBridge;
 
   private __events = {
+    pong: new PongEHandler(),
     saved: new SavedEHandler(),
     error: new ErrorEHandler()
   };
@@ -64,6 +67,16 @@ class EngineAPI {
       this.__events.saved.resolveFns.push(resolve);
       this.__events.saved.rejectFns.push(reject);
       this.__bridge?.saveNovel();
+    });
+  }
+
+  public ping() {
+    return new Promise((resolve, reject) => {
+      this.__events.pong.resolveFns.push(resolve);
+      this.__events.pong.rejectFns.push(reject);
+      this.__events.pong.setDeadline();
+
+      this.__bridge?.ping();
     });
   }
 
